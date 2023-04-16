@@ -2,7 +2,7 @@
 widget: hero
 headless: true
 weight: 10
-title: Project Docs Template
+title: JR
 hero_media: book.svg
 design:
   background:
@@ -13,19 +13,15 @@ cta:
   url: docs/
   label: Get Started
   icon_pack: fas
-  icon: download
-cta_alt:
-  url: docs/
-  label: View Documentation
+  icon: 
+
 cta_note:
   label: >-
-    <span class="js-github-release" data-repo="wowchemy/wowchemy-hugo-themes">
+    <span class="js-github-release" data-repo="https://github.com/ugol/jr">
       Project version will appear here<!-- Automatically filled based on data-repo value -->
     </span>
 ---
+Quality Random Data from the Command line
 
-Published with the [Wowchemy Website Builder](https://wowchemy.com/) for Hugo.
-
-Write something interesting about your project here.
-
-<a class="github-button" href="https://github.com/wowchemy/wowchemy-hugo-themes" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star Wowchemy Website Builder for Hugo">Star Wowchemy Website Builder for Hugo</a><br><a class="github-button" href="https://github.com/wowchemy/hugo-documentation-theme" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star the Project Docs template">Star the Hugo Documentation Theme</a><script async defer src="https://buttons.github.io/buttons.js"></script>
+<a class="github-button" href="https://github.com/ugol/jr" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star JR">Star JR on Github</a><br>
+<script async defer src="https://buttons.github.io/buttons.js"></script>

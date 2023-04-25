@@ -4,7 +4,7 @@ linktitle: Confluent Cloud
 type: book
 date: '2023-04-17T00:00:00Z'
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 2
+weight: 1
 ---
 
 ## Configuring Apache Kafka

@@ -1,13 +1,13 @@
 ---
 title: Kcat
-linktitle: KCat
+linktitle: Kcat
 type: book
 date: '2023-04-17T00:00:00Z'
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
 weight: 3
 ---
 
-### Using JR to pipe data to **KCAT**
+### Using JR to pipe data to **kcat**
 
 If you don't want to use the JR embedded Kafka support, you can use the wonderful [kcat](https://github.com/edenhill/kcat) 
 CLI tool together with JR.

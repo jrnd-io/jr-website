@@ -13,13 +13,7 @@ cta:
   url: docs/
   label: Get Started
   icon_pack: fas
-  icon: 
-
-cta_note:
-  label: >-
-    <span class="js-github-release" data-repo="https://github.com/ugol/jr">
-      Project version will appear here<!-- Automatically filled based on data-repo value -->
-    </span>
+  icon:
 ---
 Quality Random Data from the Command line
 

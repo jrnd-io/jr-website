@@ -3,7 +3,7 @@
 linktitle: How to build JR
 summary: Learn how to build JR from the source
 weight: 1
-icon: book
+#icon: book
 icon_pack: fas
 
 # Page metadata.

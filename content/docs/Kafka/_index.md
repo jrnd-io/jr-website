@@ -3,7 +3,7 @@
 linktitle: Kafka
 summary: Learn how to use JR to stream data to Kafka
 weight: 2
-icon: book
+#icon: book
 icon_pack: fas
 
 # Page metadata.
@@ -11,8 +11,6 @@ title: Kafka
 date: '2023-04-17T00:00:00Z'
 type: book # Do not modify.
 ---
-
-# JR & Kafka
 
 JR has been built with [Apache Kafka](https://kafka.apache.org/) in mind since the inception, so the Kafka support is pretty advanced.
 

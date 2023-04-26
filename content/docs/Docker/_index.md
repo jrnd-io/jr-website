@@ -3,7 +3,7 @@
 linktitle: Docker
 summary: Using docker images
 weight: 4
-icon: book
+#icon: book
 icon_pack: fas
 
 # Page metadata.
@@ -12,9 +12,7 @@ date: '2023-04-17T00:00:00Z'
 type: book # Do not modify.
 ---
 
-# Docker
-
-### Docker build
+## Docker build
 
 From the jr code directory, just use docker build to build for the architecture of the machine you are using.
 ```bash
@@ -24,7 +22,7 @@ docker build .
 
 ### Multi-Arch Build
 
-You can also build multiarch images, in this case for linux
+You can also build multiarch images, in this case for both amd64 and arm64
 
 ```bash
 # Create the local builder 

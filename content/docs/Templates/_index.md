@@ -3,7 +3,7 @@
 linktitle: Templates
 summary: Work with templates
 weight: 3
-icon: book
+#icon: book
 icon_pack: fas
 
 # Page metadata.
@@ -11,8 +11,6 @@ title: Templates
 date: '2023-04-17T00:00:00Z'
 type: book # Do not modify.
 ---
-
-# Templates
 
 Templates are everywhere in JR. 
 

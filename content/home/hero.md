@@ -11,7 +11,7 @@ design:
     text_color_light: true
 cta:
   url: docs/
-  label: Get Started
+  label: JR Documentation
   icon_pack: fas
   icon:
 ---

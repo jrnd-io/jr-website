@@ -3,7 +3,7 @@
 linktitle: Hello JR
 summary: First JR Tutorial
 weight: 1
-icon: book
+#icon: book
 icon_pack: fas
 
 # Page metadata.

@@ -19,7 +19,7 @@ Images are based on Red Hat Universal Base Image 9 Micro.
 From the jr code directory, just use docker build to build for the architecture of the machine you are using.
 ```bash
 # build for your arch 
-docker build .
+docker build --file Dockerfile.ubi9 .
 ```
 
 ### Multi-Arch Build

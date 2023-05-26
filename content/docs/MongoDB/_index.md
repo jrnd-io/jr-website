@@ -14,4 +14,24 @@ type: book # Do not modify.
 
 ## Use JR to stream data to MongoDB
 
-TBD
+MongoDB Configuration:
+
+```json
+{
+"mongo_uri": "mongodb://<host>:<port>",
+"database": "<database>",
+"collection": "<collection>",
+"username": "<username>",
+"password": "<password>"
+}
+```
+
+MongoDB Atlas Configuration:
+
+```json
+{
+  "mongo_uri": "mongodb+srv://<username>:<password>@<cluster-address>/<database-name>?retryWrites=true&w=majority",
+  "database": "<database>",
+  "collection": "<collection>"
+}
+```

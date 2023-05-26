@@ -14,4 +14,13 @@ type: book # Do not modify.
 
 ## Use JR to stream data to Elastic Search
 
-TBD
+Elastic Configuration:
+
+```json
+{
+  "es_uri": "http://<host>:<port>",
+  "index": "<index_name>",
+  "username": "<username>",
+  "password": "<password>"
+}
+```

@@ -14,8 +14,15 @@ JR has plenty of embedded functions that can be used to write yor own templates.
 We have included the documentation for all the functions directly into JR.
 
 You can list all the available functions with a simple command:
+
 ```bash
-jr man -l
+jr function list
+```
+
+or, with a shorter syntax
+
+```bash
+jr man
 ```
 
 You can filter by category:

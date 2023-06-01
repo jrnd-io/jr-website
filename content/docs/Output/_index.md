@@ -14,6 +14,31 @@ type: book # Do not modify.
 
 ## Use JR to stream data to MongoDB
 
+You can use JR to stream data to many different stores, not only Kafka.
+
+```bash
+jr producer list
+```
+
+You'll get an output similar to:
+```
+List of JR emitters:
+
+Console * (--output = stdout)
+Kafka (--output = kafka)
+Redis (--output = redis)
+Mongodb (--output = mongo)
+Elastic (--output = elastic)
+S3 (--output = s3)
+```
+to use an output, just set the corresponding value in `--output`
+
+Every output needs also a corresponding configuration
+
+## MongoDB
+
+`--mongoConfig` parameter to add a MongoDB/Atlas configuration (default `"./mongoDB/config.json"`)
+
 MongoDB Configuration:
 
 ```json
@@ -35,22 +60,15 @@ MongoDB Atlas Configuration:
   "collection": "<collection>"
 }
 ```
-## Use JR to stream data to Redis
+## Redis
 
 TBD
 
-## Use JR to stream data to Amazon S3
-
-Configure your AWS credentials properly, either by setting environment:
-
-```bash
-$ export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
-$ export AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>
-```
-
-## Use JR to stream data to Elastic Search
+## Elastic Search
 
 Elastic Configuration:
+
+`--elasticConfig` parameter to add an Elastic Search configuration (default `"./elastic/config.json"`)
 
 ```json
 {
@@ -60,16 +78,19 @@ Elastic Configuration:
   "password": "<password>"
 }
 ```
-## Use JR to stream data to Amazon S3
 
-Configure your AWS credentials properly, either by setting environment:
+## Amazon S3
+
+`--s3Config` parameter to add an S3 configuration (default `"./s3/config.json"`)
+
+Configure your AWS credentials properly:
 
 ```bash
 $ export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
 $ export AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>
 ```
 
-Amazon S3 Configuration:
+Amazon S3 Configuration in `config.json`
 
 ```json
 {

@@ -89,7 +89,7 @@ Results are by default written on standard out (`--output "stdout"`) with this o
 
 which means that only the "Value" is in the output. You can change this behaviour embedding a different template with `--outputTemplate`
 
-If you want syntax colouring and your output is just json, you can pipe to jq
+If you want syntax colouring and your output is just json, you can pipe to [jq](https://jqlang.github.io/jq/)
 
 ```bash
 jr run net_device -n 2 -f 100ms -d 1m | jq

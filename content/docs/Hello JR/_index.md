@@ -32,8 +32,15 @@ Templates with parsing issues are showed in <font color='red'>red</font>, Templa
 Use for example the predefined `net_device` template to generate a random JSON network device
 
 ```bash
+jr template run net_device
+```
+
+It's also possible to use a shorter version of the command
+
+```bash
 jr run net_device
-````
+```
+
 
 ### Other options for templates
 
@@ -41,19 +48,12 @@ If you want to use your own template, you have several options:
 
 - put it in the default directory
 - put it in another directory and use the `--templateDir` flag
-- put it in another directory and use the `--templateFileName` flag to directly refer to it
-- embed it directly in the command using the `--template` flag
+- embed it directly in the command using the `--embedded` flag
 
-For a quick and dirty test, a good option is to directly point to a template:
-
-```bash 
-jr run --templateFileName ~/.jr/templates/user.tpl
-```
-
-For an even quicker and dirtier test, the best option is to embed directly a template in the command:
+For a quick and dirty test, the best option is to embed directly a template in the command:
 
 ```bash
-jr run --template "name:{{name}}"
+jr run --embedded "name:{{name}}"
 ```
 
 ### Create more random data
@@ -69,13 +69,16 @@ jr run net_device -n 3
 Using `--frequency` option you can repeat the creation every `f` milliseconds
 
 This example creates 2 net_device every second, for ever:
+
 ```bash
 jr run net_device -n 2 -f 1s 
 ```
+
 Using `--duration` option you can time bound the entire object creation.
 This example creates 2 net_device every 100ms for 1 minute:
+
 ```bash
-jr run net_device -n 2 -f 100ms -d 1m 
+jr run net_device -n 2 -f 100ms -d 1m
 ```
 
 Results are by default written on standard out (`--output "stdout"`) with this output template:
@@ -85,3 +88,17 @@ Results are by default written on standard out (`--output "stdout"`) with this o
 ```
 
 which means that only the "Value" is in the output. You can change this behaviour embedding a different template with `--outputTemplate`
+
+If you want syntax colouring and your output is just json, you can pipe to jq
+
+```bash
+jr run net_device -n 2 -f 100ms -d 1m | jq
+```
+
+Beware that if you, for example, include the key in the output, it won't be possible to use jq:
+
+```bash
+jr run net_device -n 2 -f 100ms -d 1m --kcat | jq
+
+parse error: Expected value before ',' at line 1, column 5
+```

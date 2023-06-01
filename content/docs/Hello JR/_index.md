@@ -22,7 +22,7 @@ JR is very straightforward to use. Here are some examples:
 
 ### Listing existing templates
 ```bash
-jr list
+jr template list
 ````
 Templates are in the directory `$HOME/.jr/templates`. You can override with the ```--templatePath``` command flag
 Templates with parsing issues are showed in <font color='red'>red</font>, Templates with no parsing issues are showed in <font color='green'>green</font>

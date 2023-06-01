@@ -1,7 +1,7 @@
 ---
 # Title, summary, and page position.
 linktitle: Emitters
-emittersweight: 2
+weight: 120
 #icon: book
 icon_pack: fas
 

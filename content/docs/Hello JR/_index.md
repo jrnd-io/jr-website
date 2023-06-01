@@ -2,7 +2,7 @@
 # Title, summary, and page position.
 linktitle: Hello JR
 summary: First JR Tutorial
-weight: 1
+weight: 100
 #icon: book
 icon_pack: fas
 

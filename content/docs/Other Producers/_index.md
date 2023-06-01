@@ -1,13 +1,13 @@
 ---
 # Title, summary, and page position.
-linktitle: Output
+linktitle: Other Producers
 summary: Learn how to use JR to stream data to other outputs
-weight: 3
+weight: 400
 #icon: book
 icon_pack: fas
 
 # Page metadata.
-title: Output
+title: Other Producers
 date: '2023-05-23T00:00:00Z'
 type: book # Do not modify.
 ---

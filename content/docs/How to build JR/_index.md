@@ -2,7 +2,7 @@
 # Title, summary, and page position.
 linktitle: How to build JR
 summary: Learn how to build JR from the source
-weight: 1
+weight: 110
 #icon: book
 icon_pack: fas
 

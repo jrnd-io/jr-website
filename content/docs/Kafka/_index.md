@@ -2,7 +2,7 @@
 # Title, summary, and page position.
 linktitle: Kafka
 summary: Learn how to use JR to stream data to Kafka
-weight: 2
+weight: 300
 #icon: book
 icon_pack: fas
 

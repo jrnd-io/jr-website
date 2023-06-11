@@ -47,7 +47,6 @@ jr run net_device
 If you want to use your own template, you have several options:
 
 - put it in the default directory
-- put it in another directory and use the `--templateDir` flag
 - embed it directly in the command using the `--embedded` flag
 
 For a quick and dirty test, the best option is to embed directly a template in the command:

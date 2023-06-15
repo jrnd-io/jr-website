@@ -39,11 +39,20 @@ docker build --file Dockerfile .
 
 You can also build multiarch images, in this case for both amd64 and arm64
 
+To create it:
 ```bash
-# Create the local builder (or use it if you already created it)
+# Create the local builder
 docker buildx create --name local --bootstrap --use
-#docker buildx use local
 
-# Push on DockerHub for arm64
+# Push on DockerHub 
+docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg=VERSION="0.3.0"  --push -t YOURDOCKERHUBUSER/jr:latest .
+```
+
+To update it:
+```bash
+# Use the previously created local builder
+docker buildx use local
+
+# Push on DockerHub
 docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg=VERSION="0.3.0"  --push -t YOURDOCKERHUBUSER/jr:latest .
 ```

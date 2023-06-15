@@ -15,6 +15,11 @@ type: book # Do not modify.
 ## Usage of JR docker images
 
 Example usage of docker image:
+
+```
+docker run -it ugol/jr-amd64:latest jr run net_device
+```
+
 ```
 docker run -it -v $(pwd)/configs:/home/jr-user/configs --rm ugol/jr-amd64:latest jr run net_device -n 5 -f 500ms -o kafka -t net_device -F /home/jr/configs/kafka.client.properties -s --serializer json-schema --registryConfig /home/jr/configs/registry.client.properties
 ```

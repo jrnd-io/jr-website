@@ -45,5 +45,5 @@ docker buildx create --name local --bootstrap --use
 #docker buildx use local
 
 # Push on DockerHub for arm64
-docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg="0.3.0"  --push -t YOURDOCKERHUBUSER/jr:latest .
+docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg=VERSION="0.3.0"  --push -t YOURDOCKERHUBUSER/jr:latest .
 ```

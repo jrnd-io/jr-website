@@ -27,8 +27,10 @@ docker build --file Dockerfile .
 You can also build multiarch images, in this case for both amd64 and arm64
 
 ```bash
-# Create the local builder 
+# Create the local builder (or use it if you already created it)
 docker buildx create --name local --bootstrap --use
+#docker buildx use local
+
 # Local build for arm64
 docker buildx build --file Dockerfile --load --platform linux/arm64/v8 -t ugol:jr-arm64 .
 # Local build for amd64

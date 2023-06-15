@@ -34,9 +34,9 @@ docker buildx build --file Dockerfile --load --platform linux/arm64/v8 -t ugol:j
 # Local build for amd64
 docker buildx build --file Dockerfile --load --platform linux/amd64 -t ugol:jr-amd64 .
 # Push on DockerHub for arm64
-docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg="0.3.0"  --push -t ugol/jr-arm64:latest .
+docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg=VERSION="0.3.0"  --push -t ugol/jr-arm64:latest .
 # Push on DockerHub for amd64
-docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg="0.3.0"  --push -t ugol/jr-amd64:latest .
+docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg=VERSION="0.3.0"  --push -t ugol/jr-amd64:latest .
 ```
 
 ### How to use jr with local configurations

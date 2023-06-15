@@ -45,7 +45,7 @@ To create it:
 docker buildx create --name local --bootstrap --use
 
 # Push on DockerHub 
-docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg=VERSION="0.3.0"  --push -t YOURDOCKERHUBUSER/jr:latest .
+docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg=VERSION="0.3.0"  --build-arg=TIME="$(date)" --push -t YOURDOCKERHUBUSER/jr:latest .
 ```
 
 To update it:
@@ -54,5 +54,5 @@ To update it:
 docker buildx use local
 
 # Push on DockerHub
-docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg=VERSION="0.3.0"  --push -t YOURDOCKERHUBUSER/jr:latest .
+docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg=VERSION="0.3.0"  --build-arg=TIME="$(date)" --push -t YOURDOCKERHUBUSER/jr:latest .
 ```

@@ -12,7 +12,15 @@ date: '2023-04-17T00:00:00Z'
 type: book # Do not modify.
 ---
 
-## Docker build
+## Usage of JR docker images
+
+Example usage of docker image:
+```
+docker run -it -v $(pwd)/configs:/home/jr-user/configs --rm ugol/jr-amd64:latest jr run net_device -n 5 -f 500ms -o kafka -t net_device -F /home/jr/configs/kafka.client.properties -s --serializer json-schema --registryConfig /home/jr/configs/registry.client.properties
+```
+![docker](https://user-images.githubusercontent.com/89472/230502463-cb6faaf8-fcf1-48c4-a571-031d46725cc1.gif)
+
+## How to build yor own image
 
 Images are based on Red Hat Universal Base Image 9 Micro.
 
@@ -22,7 +30,7 @@ From the jr code directory, just use docker build to build for the architecture 
 docker build --file Dockerfile .
 ```
 
-### Multi-Arch Build
+### How to build yor own Multi-Arch image
 
 You can also build multiarch images, in this case for both amd64 and arm64
 
@@ -32,20 +40,11 @@ docker buildx create --name local --bootstrap --use
 #docker buildx use local
 
 # Local build for arm64
-docker buildx build --file Dockerfile --load --platform linux/arm64/v8 -t ugol:jr-arm64 .
+docker buildx build --file Dockerfile --load --platform linux/arm64/v8 -t YOURDOCKERHUBUSER:jr-arm64 .
 # Local build for amd64
-docker buildx build --file Dockerfile --load --platform linux/amd64 -t ugol:jr-amd64 .
+docker buildx build --file Dockerfile --load --platform linux/amd64 -t YOURDOCKERHUBUSER:jr-amd64 .
 # Push on DockerHub for arm64
-docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg="0.3.0"  --push -t ugol/jr-arm64:latest .
+docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg="0.3.0"  --push -t YOURDOCKERHUBUSER/jr-arm64:latest .
 # Push on DockerHub for amd64
-docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg="0.3.0"  --push -t ugol/jr-amd64:latest .
+docker buildx build --platform linux/arm64/v8,linux/amd64  --build-arg=USER="$(whoami)" --build-arg="0.3.0"  --push -t YOURDOCKERHUBUSER/jr-amd64:latest .
 ```
-
-### How to use jr with local configurations
-
-It is possible to mount config files from your local environment and use them with jr docker image.
-
-```
-docker run -it -v $(pwd)/configs:/home/jr-user/configs --rm ugol/jr-amd64:latest jr run net_device -n 5 -f 500ms -o kafka -t net_device -F /home/jr/configs/kafka.client.properties -s --serializer json-schema --registryConfig /home/jr/configs/registry.client.properties
-```
-![docker](https://user-images.githubusercontent.com/89472/230502463-cb6faaf8-fcf1-48c4-a571-031d46725cc1.gif)

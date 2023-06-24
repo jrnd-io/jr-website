@@ -89,9 +89,7 @@ You can configure emitters via API or via a json file. Let's see the predefined 
 }
 ```
 
-As you can see, there are two main sections: `emitters` and `global`.
-
-The `global` section contains basic general configuration for JR, while the `emitters` one is an array of emitters.
+The `emitters` section contains an array of emitters.
 Each emitter has several parameters that can be configured:
 
 - "name":  name of the emitter, will be shown for example with `jr emitter list`

@@ -12,7 +12,7 @@ date: '2023-05-23T00:00:00Z'
 type: book # Do not modify.
 ---
 
-## Use JR to stream data to MongoDB
+## Use JR to stream data to external stores
 
 You can use JR to stream data to many different stores, not only Kafka.
 

@@ -6,7 +6,7 @@ weight: 120
 icon_pack: fas
 
 # Page metadata.
-title: Emitters
+title: JR Configuration
 date: '2023-06-01T00:00:00Z'
 type: book # Do not modify.
 ---

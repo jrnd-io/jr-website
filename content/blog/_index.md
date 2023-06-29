@@ -14,4 +14,4 @@ https://dev.to/ugol/jr-quality-random-data-from-the-command-line-part-ii-3nb3
 
 JR Deck presentation
 
-[Kafka 101.pdf](/files/kafka101.pdf)
+[JR : Quality Random Data from the Command line](/files/jr.pdf)

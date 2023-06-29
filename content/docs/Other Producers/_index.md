@@ -62,7 +62,16 @@ MongoDB Atlas Configuration:
 ```
 ## Redis
 
-TBD
+`--redisConfig` parameter to add a Redis configuration (default `"./redis/config.json"`)
+
+```json
+{
+  "host": "<redis_host>",
+  "port": "<redis_host_port>",
+  "username": "<username>",
+  "password": "<password>"
+}
+```
 
 ## Elastic Search
 

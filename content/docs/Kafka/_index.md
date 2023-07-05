@@ -22,8 +22,8 @@ Just use the `--output kafka` (which defaults to `console`) flag and `--topic` f
 jr run net_device -n 5 -f 500ms -o kafka -t test
 ```
 
-If you don't specify a key, the string "key" will be used for each record.
-Using `--key` you can use a template for the key, embedding it directly in the command:
+If you don't specify a key, ta null key will be used for each record.
+Using `--key` you can use a template for the key, to be embedded directly in the command:
 
 For example:
 ```bash

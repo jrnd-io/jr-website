@@ -8,7 +8,7 @@ icon_pack: fas
 
 # Page metadata.
 title: Other Producers
-date: '2023-05-23T00:00:00Z'
+date: '2023-12-06T00:00:00Z'
 type: book # Do not modify.
 ---
 
@@ -30,6 +30,7 @@ Redis (--output = redis)
 Mongodb (--output = mongo)
 Elastic (--output = elastic)
 S3 (--output = s3)
+GCS (--output = gcs)
 ```
 to use an output, just set the corresponding value in `--output`
 
@@ -105,5 +106,21 @@ Amazon S3 Configuration in `config.json`
 {
   "aws_region": "<aws-region>",
   "bucket": "<s3-bucket-name>"
+}
+```
+
+## Google GCS
+
+`--gcsConfig` parameter to add a GCS configuration (default `"./gcs/config.json"`)
+
+Current implementation uses Google Application Default Credentials to authorize and authenticate the client.
+More information about Application Default Credentials and how to enable is at:
+https://developers.google.com/identity/protocols/application-default-credentials.
+
+Google GCS Configuration in `config.json`
+
+```json
+{
+  "bucket_name": "<gcs-bucket-name>"
 }
 ```

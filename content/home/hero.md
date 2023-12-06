@@ -22,6 +22,6 @@ Streaming quality Random Data from the Command line
 
 Install `jr` using [Homebrew](https://formulae.brew.sh/formula/jr):
 
-```shell
+```bash
 $ brew install jr
 ```

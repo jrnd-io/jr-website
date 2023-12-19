@@ -9,10 +9,17 @@ Creating random data for Kafka shouldn't be complex and cumbersome: JR is here t
 
 ## Installation
 
-The easiest way to install the latest stable release of jr is to use brew:
+The easiest way to install the latest stable release of jr is to use [brew](https://formulae.brew.sh/formula/jr) on mac/linux:
 
 ```bash
 brew install jr
+```
+
+or [snap](https://snapcraft.io/jrnd) on linux:
+
+```bash
+sudo snap install jrnd
+sudo snap alias jrnd.jr jr
 ```
 If you need the latest bits, the repo with the code is [here](https://github.com/ugol/jr)
 

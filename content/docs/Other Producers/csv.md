@@ -17,16 +17,12 @@ Next example will show how to create a _data.csv_ from template _net_device_:
 
 
 ```bash
-# generate 4 entries, output to temp file data.json and data2.csv, generate file data.csv
-
-jr run net_device -n 4 > data.json && jq -r 'to_entries|(map(.value))|@csv' data.json > data.csv && jq -r 'to_entries|(map(.key))|@csv' data.json | head -1 >> data.csv &&  awk '{a[NR]=$0}END{for(x=1;x<NR;x++){if(x==1)print a[NR];print a[x]}}' data.csv > data2.csv && mv data2.csv data.csv && rm data.json
+jr run net_device -n 4 > data.json && jq -r 'to_entries|(map(.key))|@csv' data.json | head -1 > data.csv | jq -r 'to_entries|(map(.value))|@csv' data.json >> data.csv && rm data.json
 ```
 
- -  _jr_ will generate 4 entries and save to file _data.json_
- -  _jq_ will extract field values and save to file _data.csv_ using standard separator
- -  _jq_ will extract field keys and save to file data.csv using standard separator. Headers will be inserted at the end of file _data.csv_
- - _awk_ will move last line with csv headers to first line, using a temp file _data2.csv_
- - cleanup temp files
+ - _jr_ will generate 4 entries and save to file _data.json_
+ - _jq_ will extract field keys and save to file data.csv using standard separator
+ - _jq_ will extract field values and save to file _data.csv_ using standard separator
 
 
 Content of file _data.csv_:

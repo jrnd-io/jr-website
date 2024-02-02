@@ -1,7 +1,7 @@
 ---
 # Title, summary, and page position.
 linktitle: JR Recipes
-weight: 120
+weight: 500
 #icon: book
 icon_pack: fas
 

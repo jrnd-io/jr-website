@@ -34,3 +34,17 @@ Content of file _data.csv_:
 "BETA","10.1.111.105","10.1.175.125",1720,1702076218,1706233124,631,443,0,2,155,4,1,443,"UDP","Session"
 "ALPHA","10.1.216.100","10.1.201.1",1599,1703239149,1705943616,22,443,0,3,234,3,1,81,"TCP","Transport
 ```
+
+_jr_ can also be used without _jq_ to export a csv file. This can be easily achieved using a custom template; next example will show how to generate custom data with a custom template and export results to file _city_temperature.csv_
+
+```bash
+echo -e "city;temperature" > city_temparature.csv && jr template run -n 4 --embedded '{{city}},{{format_float "%.1f" (floating 40 5)}}' >> city_temparature.csv
+```
+
+```bash
+city;temperature
+Tampa,30.2
+Tucson,36.0
+Cincinnati,31.5
+Houston,24.2
+```

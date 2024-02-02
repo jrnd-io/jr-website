@@ -11,7 +11,7 @@ date: '2024-02-01T00:00:00Z'
 type: book # Do not modify.
 ---
 
-_jr_ can also be used without _jq_ to export a csv file. This can be easily achieved using a custom template; next example will show how to generate custom data with a custom template and export results to file _city_temperature.csv_
+_jr_ can be used to generate random data and export them to a csv file. This can be easily achieved using a custom template; next example will show how to generate custom data with a custom template and export results to file _city_temperature.csv_
 
 ```bash
 echo -e "city;temperature" > city_temparature.csv && jr template run -n 4 --embedded '{{city}};{{format_float "%.1f" (floating 40 5)}}' >> city_temparature.csv

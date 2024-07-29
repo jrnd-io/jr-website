@@ -65,4 +65,4 @@ The default schemas in JR are located in `pks/types` folder: at the moment the o
 
  - `payment_credit_card.avsc`, field `card_number`
 
-If you need to add additional PII fileds, you should update `avsc` files in `pkg/types` folder and recompile JR.
+If you need additional PII fields or additonal templates with PII, you should update `avsc` files in `pkg/types` folder and then recompile JR.

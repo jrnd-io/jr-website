@@ -10,7 +10,7 @@ weight: 2
 ### Confluent Schema Registry support
 
 There is also support for Confluent Schema Registry.
-At the moment `json-schema`, `avro-generic` and `avro` are all supported.
+At the moment `json-schema` and `avro` are supported.
 
 To use Confluent Schema registry you need first to fill the `registry.properties` provided example with the needed link and user/pwd:
 
@@ -44,3 +44,25 @@ JR supports **kcat** out of the box. Using the `--kcat` flag the standard output
 ```bash
 jr run -k '{{randoms "ONE|TWO|THREE"}}' -f 1s -d 5s net_device --kcat | kcat -F kafka/config.properties -K , -P -t test
 ```
+
+### Support for Client-Side Field Level Encryption on Confluent Cloud (CSFLE)
+
+JR supports end to end (E2E) encryption for Confluent Cloud.
+
+In order to use the functionality, first follow the official documentation on Confluent Cloud for prerequisites and configuration: 
+https://docs.confluent.io/cloud/current/security/encrypt/csfle/overview.html
+
+After setup accordingly with the documentation, you can then enable CSFLE in JR simply filling those properties in `registry.properties`: 
+
+```properties
+kekName=a name identifying the key encryption key 
+kmsType=valid options are "aws-kms" or "azure-kms" or "gcp-kms"
+kmsKeyID=id of the kek
+```
+
+In order to use CSFLE, you need an AVRO schema with fields marked as sensitive (PII). 
+The default schemas in JR are located in `pks/types` folder: at the moment the ones containing PII fields are:
+
+ - `payment_credit_card.avsc`, field `card_number`
+
+If you need additional PII fields or additional templates with PII, you should update `avsc` files in `pkg/types` folder and then recompile JR.

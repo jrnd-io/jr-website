@@ -1,7 +1,7 @@
 ---
 title: Introduction to JR
 type: book # Do not modify.
-toc: false
+toc: true
 ---
 
 JR is an Open Source CLI program that helps you to create quality random data for your streaming applications.

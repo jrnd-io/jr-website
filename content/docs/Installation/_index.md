@@ -1,6 +1,6 @@
 ---
 # Title, summary, and page position.
-linktitle: Building from the source
+linktitle: Building JR
 summary: Learn how to build JR from the source
 weight: 110
 #icon: book

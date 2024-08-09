@@ -1,7 +1,7 @@
 ---
 # Title, summary, and page position.
 linktitle: Installation
-summary: Learn how to build JR from the source
+summary: Learn how to install and/or build JR from the source
 weight: 110
 #icon: book
 icon_pack: fas

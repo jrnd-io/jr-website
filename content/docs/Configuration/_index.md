@@ -11,6 +11,8 @@ date: '2023-06-01T00:00:00Z'
 type: book # Do not modify.
 ---
 
+## Global section
+
 JR can be configured via a json file called jrconfig.json. This file could be everywhere in the `$PATH`, in current dir (`.`) or in the `$JR_HOME` directory.
 `$JR_HOME` defaults to `$HOME/.jr` but can easily be changed setting an environment variable:
 
@@ -41,6 +43,7 @@ jrconfig has a global section and an emitter section
 
 The `global` section contains basic general configuration for JR, which can be overridden by corresponding flags with the `jr template run` command
 
+## Emitters
 
 What's an emitter? It's basically a preconfigured jr job, and it's really helpful when you have to generate different entities with different generation parameters and relations between them.
 

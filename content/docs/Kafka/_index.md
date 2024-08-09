@@ -1,6 +1,6 @@
 ---
 # Title, summary, and page position.
-linktitle: Kafka
+linktitle: Kafka producer
 summary: Learn how to use JR to stream data to Kafka
 weight: 300
 #icon: book

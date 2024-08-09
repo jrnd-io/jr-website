@@ -12,6 +12,8 @@ date: '2023-04-17T00:00:00Z'
 type: book # Do not modify.
 ---
 
+## Kafka Producer
+
 JR has been built with [Apache Kafka](https://kafka.apache.org/) in mind since the inception, so the Kafka support is pretty advanced.
 
 ### Writing data to Apache Kafka

@@ -25,7 +25,7 @@ sudo snap alias jrnd.jr jr
 ```
 
 At the moment there are some JR features that need you to recompile JR, for example, if you add your own templates _AND_ you want your templates serialized with AVRO. 
-Luckily, that's pretty easy, at least on Unix systems, see 
+Luckily, that's pretty easy, at least on Unix systems, see [building](https://jrnd.io/docs/building/)
 
 ## Basic usage
 

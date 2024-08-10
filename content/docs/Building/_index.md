@@ -7,28 +7,15 @@ weight: 110
 icon_pack: fas
 
 # Page metadata.
-title: Installation
+title: Building
 date: '2023-04-17T00:00:00Z'
 type: book # Do not modify.
 ---
 
-## Installation on Unix systems (Linux/Mac)
+To make the most of JR, recompile it from the source. 
+This is needed if you want to serialize with AVRO your own templates, though it's NOT needed if you are using AVRO only with the predefined templates)
 
-The easiest way to install the latest stable release of jr is to use [brew](https://formulae.brew.sh/formula/jr) on mac/linux:
-
-```bash
-brew install jr
-```
-
-or [snap](https://snapcraft.io/jrnd) on linux:
-
-```bash
-sudo snap install jrnd
-sudo snap alias jrnd.jr jr
-```
-If you need the latest bits, the repo with the code is [here](https://github.com/ugol/jr)
-
-## Building and compiling
+## Building JR on Linux/Mac
 
 JR requires Go 1.22
 
@@ -55,7 +42,7 @@ If you want to run the Unit tests, you have a `make` target for that too:
 make test
 ```
 
-## Installation on Windows
+## Building JR on Windows
 
 
 - Install MSYS2 https://www.msys2.org/

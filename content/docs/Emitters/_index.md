@@ -1,12 +1,12 @@
 ---
 # Title, summary, and page position.
-linktitle: JR Configuration
+linktitle: Emitters
 weight: 120
 #icon: book
 icon_pack: fas
 
 # Page metadata.
-title: JR Configuration
+title: JR Emitters
 date: '2023-06-01T00:00:00Z'
 type: book # Do not modify.
 ---

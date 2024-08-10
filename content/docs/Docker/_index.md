@@ -13,16 +13,20 @@ type: book # Do not modify.
 
 ## Using JR via Docker
 
-## Usage of JR docker images
+Latest docker images are here:
+`jrndio/jr:latest`
 
-Example usage of docker image:
+or here:
+`ghcr.io/jrnd-io/jr:latest`
+
+###  JR docker examples
 
 ```
-docker run -it ugol/jr:latest jr run net_device
+docker run -it jrndio/jr:latest jr run net_device
 ```
 
 ```
-docker run -it -v $(pwd)/configs:/home/jr-user/configs --rm ugol/jr:latest jr run net_device -n 5 -f 500ms -o kafka -t net_device -F /home/jr/configs/kafka.client.properties -s --serializer json-schema --registryConfig /home/jr/configs/registry.client.properties
+docker run -it -v $(pwd)/configs:/home/jr-user/configs --rm jrndio/jr:latest jr run net_device -n 5 -f 500ms -o kafka -t net_device -F /home/jr/configs/kafka.client.properties -s --serializer json-schema --registryConfig /home/jr/configs/registry.client.properties
 ```
 ![docker](https://user-images.githubusercontent.com/89472/230502463-cb6faaf8-fcf1-48c4-a571-031d46725cc1.gif)
 

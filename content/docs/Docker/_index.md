@@ -1,7 +1,7 @@
 ---
 # Title, summary, and page position.
 linktitle: Docker
-weight: 600
+weight: 500
 #icon: book
 icon_pack: fas
 

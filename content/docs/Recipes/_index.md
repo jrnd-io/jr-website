@@ -44,10 +44,10 @@ jr template run --embedded '{{integer 1 10 | inject 0.5 -0.001 }}'
 jr template run --embedded '{{uuid | inject 0.5 -0.0001 }}'
 
 # injecting a bad string
-jr template run --embedded '{{$bad_city:=regex "[A-Z]{5}"}}{{city | inject 0.5 $bad_city }}'
+jr template run --embedded '{{$bad:=regex "[A-Z]{5}"}}{{city | inject 0.5 $bad }}'
 ```
 
-You can also run an example directly from the command line `man`
+You can also run this `inject` example directly from the command line
 
 ```bash
 jr man inject --run

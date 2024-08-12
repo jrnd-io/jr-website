@@ -11,8 +11,6 @@ date: '2024-02-02T00:00:00Z'
 type: book # Do not modify.
 ---
 
-In this section you can find different recipes to solve issues with _jr_ 
-
 ## Using JR GUI
 
 JR can be used with a GUI to facilitate template testing/editing.

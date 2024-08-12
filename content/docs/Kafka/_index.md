@@ -70,18 +70,18 @@ JR supports **kcat** out of the box. Using the `--kcat` flag the standard output
 jr run -k '{{randoms "ONE|TWO|THREE"}}' -f 1s -d 5s net_device --kcat | kcat -F kafka/config.properties -K , -P -t test
 ```
 
-## Confluent CLoud
+## Confluent Cloud
 
 First thing to do is to create a Kafka cluster and relative kafka.properties file. The easiest way to do that is to use [Confluent Cloud]("https://confluent.cloud/").
 
 Here we document three different ways of doing that. Choose the one that fits you better!
 
-### 1. Confluent Cloud and downloading the config file
+### Confluent Cloud and downloading the config file
 
 Just create a basic (free!) Cluster with the web console in [Confluent Cloud]("https://confluent.cloud/") and
 copy-paste the configuration in the HOME > ENVIRONMENTS > YOUR ENVIRONMENT > YOUR CLUSTER > CLIENTS > New Client section.
 
-### 2. Confluent Cloud and config file via Confluent CLI
+### Confluent Cloud and config file via Confluent CLI
 
 You can use the [confluent CLI]("https://docs.confluent.io/confluent-cli/current/overview.html") to create a cluster and
 the configuration in a programmatic way:

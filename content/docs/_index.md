@@ -189,4 +189,7 @@ if you run for example
 ```bash 
 jr run --template '{{ip "10.2.0.0/16"}} --kcat
 ```
-you'll observe that `--kcat` changes the output Template to `{{.K}},{{.V}}\n` so to print the Key, a comma, and the Value on a single line (`--oneline`), to be piped to tools like kcat.
+you'll observe that `--kcat` changes the output Template to `{{.K}},{{.V}}\n` so to print the Key, a comma, and the Value. 
+To be compliant with kcat, everything must be on a single line.
+
+So `--kcat` it's only a shorthand equivalent for `--output stdout --outputTemplate '{{.K}},{{.V}}' --oneline`

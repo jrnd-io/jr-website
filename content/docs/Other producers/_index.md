@@ -137,7 +137,7 @@ Amazon S3 Configuration in `config.json`
   "bucket": "<s3-bucket-name>"
 }
 ```
-## Http Producer
+## HTTP Producer
 
 Usage:
 

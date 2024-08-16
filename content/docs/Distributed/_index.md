@@ -1,12 +1,12 @@
 ---
 # Title, summary, and page position.
-linktitle: Distributed
+linktitle: Distributed JR
 weight: 540
 #icon: book
 icon_pack: fas
 
 # Page metadata.
-title: Distributed
+title: Distributed JR
 date: '2024-02-02T00:00:00Z'
 type: book # Do not modify.
 ---

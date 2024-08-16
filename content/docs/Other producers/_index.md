@@ -137,6 +137,49 @@ Amazon S3 Configuration in `config.json`
   "bucket": "<s3-bucket-name>"
 }
 ```
+## Http Producer
+
+Usage:
+
+```bash 
+jr run net_device --output http --httpConfig ./httpconfig.json
+```
+
+where httpconfig.json is something like:
+
+```json
+{
+    "endpoint": {
+        "url": "https://jr.io",
+        "method": "POST",
+        "timeout": "10s"
+    },
+    "session":{
+        "use_cookie_jar": false
+    },
+    "error_handling":{
+        "expect_status_code": 200,
+        "ignore_status_code": false,
+    },
+    "headers":{
+        "header01":"value01",
+        "header02":"value02",
+    },
+    "tls":{
+        "insecure_skip_verify": false,
+        "cert_file": "/path/to/cert_file",
+        "key_file": "/path/to/key_file",
+        "root_ca_file": "/path/to/root_ca_file"
+    },
+    "authentication":{
+        "type": "basic",
+        "basic":{
+            "username": "user",
+            "password": "password",
+        }
+    }
+}
+```
 
 ## Implementing other Producers
 

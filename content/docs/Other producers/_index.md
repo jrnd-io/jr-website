@@ -24,7 +24,7 @@ jr producer list
 
 You'll get an output similar to:
 ```
-List of JR emitters:
+List of JR producers:
 
 Console * (--output = stdout)
 Kafka (--output = kafka)

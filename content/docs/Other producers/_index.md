@@ -14,7 +14,9 @@ type: book # Do not modify.
 
 ## Use JR to stream data to external stores
 
-You can use JR to stream data to many different stores, not only Kafka.
+You can use JR to stream data to many different stores, not only Kafka. 
+JR supports natively several different producers: you can also easily `jr run template | CLI-tool-to-your-store` if your preferred store is not natively supported. 
+If you think that your preferred store should be supported, why not [implement it](#implementing-other-producers)? Or just open up [an issue](https://github.com/ugol/jr/issues) and we'll do that for you!
 
 ```bash
 jr producer list

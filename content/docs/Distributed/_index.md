@@ -14,7 +14,7 @@ type: book # Do not modify.
 ## Distributed JR
 
 If you need to generate more data than a single instance of JR can handle, what you need is Distributed JR!
-At the moment you can distribute JR with two different frameworks: [Locust](https://locust.io) or [xk6-exec](https://github.com/grafana/xk6-exec).
+At the moment you can distribute JR with two different frameworks: [Locust](https://locust.io) or [K6](https://github.com/grafana/xk6-exec).
 
 ## Distributing JR with Locust
 

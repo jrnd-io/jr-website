@@ -33,6 +33,7 @@ Mongodb (--output = mongo)
 Elastic (--output = elastic)
 S3 (--output = s3)
 GCS (--output = gcs)
+HTTP (--output = http)
 
 ```
 to use an output, just set the corresponding value in `--output`
@@ -120,7 +121,7 @@ Google GCS Configuration in `config.json`
 
 `--output = s3`
 
-`--s3Config` parameter to add an S3 configuration (default `"./s3/config.json"`)
+`--s3Config` parameter to add a S3 configuration (default `"./s3/config.json"`)
 
 Configure your AWS credentials properly:
 
@@ -138,6 +139,10 @@ Amazon S3 Configuration in `config.json`
 }
 ```
 ## HTTP Producer
+
+`--output = http`
+
+`--httpConfig` parameter to add a HTTP configuration (default `"./httpConfig.json"`)
 
 Usage:
 

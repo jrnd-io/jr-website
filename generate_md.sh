@@ -1,0 +1,9 @@
+jr man -c network -m >> ~/Desktop/network.md
+jr man -c people -m >> ~/Desktop/people.md
+jr man -c phone -m >> ~/Desktop/phone.md
+jr man -c address -m >> ~/Desktop/address.md
+jr man -c utilities -m >> ~/Desktop/utilities.md
+jr man -c context -m >> ~/Desktop/context.md
+jr man -c math -m >> ~/Desktop/math.md
+jr man -c finance -m >> ~/Desktop/finance.md
+jr man -c text -m >> ~/Desktop/text.md

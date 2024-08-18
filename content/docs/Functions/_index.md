@@ -17,7 +17,7 @@ You can look at this list via ```jr man``` command.
 
 ## Address functions
 
-## Name: building
+### Name: building
 **Category:** address\
 **Description:** returns a random building number of max n digits\
 **Parameters:** `n int`\
@@ -26,7 +26,7 @@ You can look at this list via ```jr man``` command.
 **Example:** `jr template run --embedded '{{building 3}}'`\
 **Output:** `982`
 
-## Name: capital
+### Name: capital
 **Category:** address\
 **Description:** returns a random capital\
 **Parameters:**  \

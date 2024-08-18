@@ -33,6 +33,7 @@ Mongodb (--output = mongo)
 Elastic (--output = elastic)
 S3 (--output = s3)
 GCS (--output = gcs)
+Azure Blob Storage (--output = azblobstorage)
 HTTP (--output = http)
 
 ```
@@ -84,11 +85,53 @@ MongoDB Atlas Configuration:
 }
 ```
 
+## AWS S3 Producer
+
+`--output = s3`
+
+`--s3Config` parameter to add a S3 configuration
+
+Configure your AWS credentials properly:
+
+```bash
+$ export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
+$ export AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>
+```
+
+Amazon S3 Configuration in `config.json`
+
+```json
+{
+  "aws_region": "<aws-region>",
+  "bucket": "<s3-bucket-name>"
+}
+```
+
+## Azure Blob Storage Producer
+
+`--output = azblobstorage`
+
+`--azBlobStorageConfig` parameter to add a Azure Blob Storage configuration 
+
+Azure Blob Storge Configuration in `config.json`
+
+```json
+{
+    "account_name": "<account name>",
+    "primary_account_key":"<primary account key>",
+    "container":{
+        "name": "<container name>",
+        "create": false
+    }
+
+}
+```
+
 ## GCS Producer
 
 `--output = gcs`
 
-`--gcsConfig` parameter to add a GCS configuration (default `"./gcs/config.json"`)
+`--gcsConfig` parameter to add a GCS configuration
 
 Current implementation uses Google Application Default Credentials to authorize and authenticate the client.
 More information about Application Default Credentials and how to enable is at:
@@ -117,27 +160,6 @@ Google GCS Configuration in `config.json`
 }
 ```
 
-## S3 Producer
-
-`--output = s3`
-
-`--s3Config` parameter to add a S3 configuration (default `"./s3/config.json"`)
-
-Configure your AWS credentials properly:
-
-```bash
-$ export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
-$ export AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>
-```
-
-Amazon S3 Configuration in `config.json`
-
-```json
-{
-  "aws_region": "<aws-region>",
-  "bucket": "<s3-bucket-name>"
-}
-```
 ## HTTP Producer
 
 `--output = http`

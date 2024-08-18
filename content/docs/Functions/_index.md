@@ -15,7 +15,7 @@ type: book # Do not modify.
 This section contains all the available functions in JR Templates.
 You can look at this list via ```jr man``` command.
 
-# Address functions
+## Address functions
 
 ## Name: building
 **Category:** address\
@@ -188,7 +188,7 @@ You can look at this list via ```jr man``` command.
 **Example:** `jr template run --embedded '{{zip_at 3}}'`\
 **Output:** `72201`
 
-# Context functions
+## Context functions
 
 ## Name: add_v_to_list
 **Category:** context\
@@ -244,7 +244,7 @@ You can look at this list via ```jr man``` command.
 **Example:** `jr template run --embedded '{{set_v "id" "12770"}}{{get_v "id"}}'`\
 **Output:** `12770`
 
-# Finance functions 
+## Finance functions 
 
 ## Name: account
 **Category:** finance\
@@ -363,7 +363,7 @@ You can look at this list via ```jr man``` command.
 **Example:** `jr template run --embedded '{{wkn}}'`\
 **Output:** `UFJKSNM`
 
-# Math functions
+## Math functions
 
 ## Name: add
 **Category:** math\
@@ -482,8 +482,7 @@ You can look at this list via ```jr man``` command.
 **Example:** `jr template run --embedded '{{sub 1 2}}'`\
 **Output:** `-1`
 
-# Network functions
-
+## Network functions
 
 ## Name: http_method
 **Category:** network\
@@ -539,7 +538,7 @@ You can look at this list via ```jr man``` command.
 **Example:** `jr template run --embedded '{{mac}}'`\
 **Output:** `7e:8e:75:a5:0a:85`
 
-# People functions
+## People functions
 
 ## Name: cf
 **Category:** people\
@@ -667,7 +666,7 @@ You can look at this list via ```jr man``` command.
 **Example:** `jr template run --embedded '{{username "barack" "obama" }}'`\
 **Output:** `b-obama`
 
-# Phone functions
+## Phone functions
 
 ## Name: country_code
 **Category:** phone\
@@ -732,7 +731,7 @@ You can look at this list via ```jr man``` command.
 **Example:** `jr template run --embedded '{{phone_at 79}}'`\
 **Output:** `06 72358749`
 
-# Text functions
+## Text functions
 
 ## Name: atoi
 **Category:** text\
@@ -1031,8 +1030,7 @@ You can look at this list via ```jr man``` command.
 **Example:** `jr template run --embedded '{{upper "hello"}}'`\
 **Output:** `HELLO`
 
-# Utilities functions
-
+## Utilities functions
 
 ## Name: array
 **Category:** utilities\
@@ -1119,5 +1117,3 @@ You can look at this list via ```jr man``` command.
 **Return:** `string`\
 **Example:** `jr template run --embedded '{{yesorno}}'`\
 **Output:** `yes`
-
-

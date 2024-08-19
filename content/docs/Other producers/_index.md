@@ -34,6 +34,7 @@ Elastic (--output = elastic)
 S3 (--output = s3)
 GCS (--output = gcs)
 Azure Blob Storage (--output = azblobstorage)
+Cassandra (--output = cassandra)
 HTTP (--output = http)
 
 ```
@@ -157,6 +158,24 @@ Google GCS Configuration in `config.json`
   "port": "<redis_host_port>",
   "username": "<username>",
   "password": "<password>"
+}
+```
+
+## Cassandra Producer
+
+`--output = cassandra`
+
+`--cassandraConfig` parameter to add a Cassandra configuration
+
+```json
+{
+  "hosts":["host1:port1","host2:port2",...],
+  "keyspace": "<keyspacename>",
+  "table":"<table_name>",
+  "username": "<username>",
+  "password": "<password>",
+  "timeout": "<timeout>",
+  "consistencyLevel": "<consistencyLevel>"
 }
 ```
 

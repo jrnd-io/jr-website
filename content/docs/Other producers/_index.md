@@ -43,67 +43,6 @@ to use an output, just set the corresponding value in `--output`
 
 Every output needs also a corresponding configuration.
 
-
-## MongoDB producer
-
-`--output = mongo`
-
-`--mongoConfig` parameter to add a MongoDB/Atlas configuration (default `"./mongoDB/config.json"`)
-
-MongoDB Configuration:
-
-```json
-{
-"mongo_uri": "mongodb://<host>:<port>",
-"database": "<database>",
-"collection": "<collection>",
-"username": "<username>",
-"password": "<password>"
-}
-```
-
-MongoDB Atlas Configuration:
-
-```json
-{
-  "mongo_uri": "mongodb+srv://<username>:<password>@<cluster-address>/<database-name>?retryWrites=true&w=majority",
-  "database": "<database>",
-  "collection": "<collection>"
-}
-```
-
-## Azure Cosmos DB producer
-
-`--output = azcosmosdb`
-
-`--azCosmosDBConfig` parameter to add a Azure Cosmos DB configuration
-
-```json
-{
-   "endpoint": "https://<account>.documents.azure.com:443/",
-   "primary_account_key": "<security primary access key>",
-   "database": "<database name>",
-   "container":"<container name>",
-   "partition_key": "<name of partition key field>"
-}
-```
-
-
-## Elastic Producer
-
-`--output = elastic`
-
-`--elasticConfig` parameter to add an Elastic Search configuration
-
-```json
-{
-  "es_uri": "http://<host>:<port>",
-  "index": "<index_name>",
-  "username": "<username>",
-  "password": "<password>"
-}
-```
-
 ## AWS S3 Producer
 
 `--output = s3`
@@ -146,36 +85,19 @@ Azure Blob Storge Configuration exampele:
 }
 ```
 
-## GCS Producer
+## Azure Cosmos DB producer
 
-`--output = gcs`
+`--output = azcosmosdb`
 
-`--gcsConfig` parameter to add a GCS configuration
-
-Current implementation uses Google Application Default Credentials to authorize and authenticate the client.
-More information about Application Default Credentials and how to enable is at:
-https://developers.google.com/identity/protocols/application-default-credentials.
-
-Google GCS Configuration example:
+`--azCosmosDBConfig` parameter to add a Azure Cosmos DB configuration
 
 ```json
 {
-  "bucket_name": "<gcs-bucket-name>"
-}
-```
-
-## Redis Producer
-
-`--output = redis`
-
-`--redisConfig` parameter to add a Redis configuration
-
-```json
-{
-  "host": "<redis_host>",
-  "port": "<redis_host_port>",
-  "username": "<username>",
-  "password": "<password>"
+   "endpoint": "https://<account>.documents.azure.com:443/",
+   "primary_account_key": "<security primary access key>",
+   "database": "<database name>",
+   "container":"<container name>",
+   "partition_key": "<name of partition key field>"
 }
 ```
 
@@ -194,6 +116,39 @@ Google GCS Configuration example:
   "password": "<password>",
   "timeout": "<timeout>",
   "consistencyLevel": "<consistencyLevel>"
+}
+```
+
+## Elastic Search Producer
+
+`--output = elastic`
+
+`--elasticConfig` parameter to add an Elastic Search configuration
+
+```json
+{
+  "es_uri": "http://<host>:<port>",
+  "index": "<index_name>",
+  "username": "<username>",
+  "password": "<password>"
+}
+```
+
+## Google Cloud Storage Producer
+
+`--output = gcs`
+
+`--gcsConfig` parameter to add a GCS configuration
+
+Current implementation uses Google Application Default Credentials to authorize and authenticate the client.
+More information about Application Default Credentials and how to enable is at:
+https://developers.google.com/identity/protocols/application-default-credentials.
+
+Google GCS Configuration example:
+
+```json
+{
+  "bucket_name": "<gcs-bucket-name>"
 }
 ```
 
@@ -242,6 +197,49 @@ where httpconfig.json is something like:
             "password": "password",
         }
     }
+}
+```
+
+## MongoDB producer
+
+`--output = mongo`
+
+`--mongoConfig` parameter to add a MongoDB/Atlas configuration (default `"./mongoDB/config.json"`)
+
+MongoDB Configuration:
+
+```json
+{
+"mongo_uri": "mongodb://<host>:<port>",
+"database": "<database>",
+"collection": "<collection>",
+"username": "<username>",
+"password": "<password>"
+}
+```
+
+MongoDB Atlas Configuration:
+
+```json
+{
+  "mongo_uri": "mongodb+srv://<username>:<password>@<cluster-address>/<database-name>?retryWrites=true&w=majority",
+  "database": "<database>",
+  "collection": "<collection>"
+}
+```
+
+## Redis Producer
+
+`--output = redis`
+
+`--redisConfig` parameter to add a Redis configuration
+
+```json
+{
+  "host": "<redis_host>",
+  "port": "<redis_host_port>",
+  "username": "<username>",
+  "password": "<password>"
 }
 ```
 

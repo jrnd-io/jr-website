@@ -204,7 +204,7 @@ where httpconfig.json is something like:
 
 `--output = mongo`
 
-`--mongoConfig` parameter to add a MongoDB/Atlas configuration (default `"./mongoDB/config.json"`)
+`--mongoConfig` parameter to add a MongoDB/Atlas configuration
 
 MongoDB Configuration:
 

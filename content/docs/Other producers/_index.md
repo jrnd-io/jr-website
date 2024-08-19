@@ -34,6 +34,7 @@ Elastic (--output = elastic)
 S3 (--output = s3)
 GCS (--output = gcs)
 Azure Blob Storage (--output = azblobstorage)
+Azure Cosmos DB (--output = azcosmosdb)
 Cassandra (--output = cassandra)
 HTTP (--output = http)
 
@@ -71,11 +72,28 @@ MongoDB Atlas Configuration:
 }
 ```
 
+## Azure Cosmos DB producer
+
+`--output = azcosmosdb`
+
+`--azCosmosDBConfig` parameter to add a Azure Cosmos DB configuration
+
+```json
+{
+   "endpoint": "https://<account>.documents.azure.com:443/",
+   "primary_account_key": "<security primary access key>",
+   "database": "<database name>",
+   "container":"<container name>",
+   "partition_key": "<name of partition key field>"
+}
+```
+
+
 ## Elastic Producer
 
 `--output = elastic`
 
-`--elasticConfig` parameter to add an Elastic Search configuration (default `"./elastic/config.json"`)
+`--elasticConfig` parameter to add an Elastic Search configuration
 
 ```json
 {
@@ -114,7 +132,7 @@ Amazon S3 Configuration in `config.json`
 
 `--azBlobStorageConfig` parameter to add a Azure Blob Storage configuration 
 
-Azure Blob Storge Configuration in `config.json`
+Azure Blob Storge Configuration exampele:
 
 ```json
 {
@@ -138,7 +156,7 @@ Current implementation uses Google Application Default Credentials to authorize 
 More information about Application Default Credentials and how to enable is at:
 https://developers.google.com/identity/protocols/application-default-credentials.
 
-Google GCS Configuration in `config.json`
+Google GCS Configuration example:
 
 ```json
 {
@@ -150,7 +168,7 @@ Google GCS Configuration in `config.json`
 
 `--output = redis`
 
-`--redisConfig` parameter to add a Redis configuration (default `"./redis/config.json"`)
+`--redisConfig` parameter to add a Redis configuration
 
 ```json
 {

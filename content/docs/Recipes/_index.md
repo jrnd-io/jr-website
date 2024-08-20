@@ -13,7 +13,21 @@ type: book # Do not modify.
 
 In this section you can find different recipes to solve issues with _jr_ 
 
-## Generate CSV output
+## Getting the Key from the Value
+
+If the key is part of your value, the easiest way is to do something like this
+
+```json
+{{$userid := (print "user_" (counter "user_id" 1 1 ) )}}{{set_v "KEY" $userid }}
+{
+    "registertime": {{integer64 1487715775521 1519273364600}},
+    "userid": "{{$userid}}",
+    "regionid": "Region_{{integer 1 9}}",
+    "gender": "{{randoms "MALE|FEMALE|OTHER"}}"
+}
+```
+
+## Generate CSV
 
 JR can be used to generate random data and export them to a csv file. This can be easily achieved using a custom template; next example will show how to generate custom data with a custom template and export results to file _city_temperature.csv_
 
@@ -29,9 +43,10 @@ Cincinnati;31.5
 Houston;24.2
 ```
 
-## The `fromcsv` function: use CSV files as data source in templates
+## Get data from CSV files
 
-You can use a CSV file as an input or data source for a template. For example, the following command:
+You can use a CSV file as an input or data source for a template, with the `fromcsv` function. 
+For example, the following command:
 
 ```bash
 jr run csv_user --csv users.csv
@@ -99,19 +114,6 @@ You can also run this `inject` example directly from the command line
 jr man inject --run
 ```
 
-## Getting the Key from the Value
-
-If the key is part of your value, the easiest way is to do something like this
-
-```json
-{{$userid := (print "user_" (counter "user_id" 1 1 ) )}}{{set_v "KEY" $userid }}
-{
-    "registertime": {{integer64 1487715775521 1519273364600}},
-    "userid": "{{$userid}}",
-    "regionid": "Region_{{integer 1 9}}",
-    "gender": "{{randoms "MALE|FEMALE|OTHER"}}"
-}
-```
 
 In other words, adding a simple field - or a complex one like in the above example - to the context and naming it `KEY` will be enough. 
 Note that this will override a key generated with the `--keytemplate` option

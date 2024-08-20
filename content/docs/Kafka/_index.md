@@ -186,4 +186,4 @@ If you need additional PII fields or additional templates with PII, you should u
 ## Dynamic AVRO
 
 System wide templates can natively serialize to AVRO, but user/embedded templates cannot - unless you recompile JR - due to the static nature of the go libraries used.
-[Here](../docs/recipes/#dynamic-avro) is a recipe to dynamically serialize to avro your user/embedded templates without recompiling
+[Here](../recipes/#dynamic-avro) is a recipe to dynamically serialize to avro your user/embedded templates without recompiling

@@ -172,7 +172,7 @@ which will basically execute this command for you:
  jr run --template '{{ip "10.2.0.0/16"}}'
  ```
 
-If you're really lazy and don't want to run `jr man`, this [page](https://jrnd.io/docs/functions) contains all the functions divided per category.
+If you're really lazy and don't want to run `jr man`, this [page](../docs/functions) contains all the functions divided per category.
 
 To study more advanced usages, look at the templates in your `templates` directory
 

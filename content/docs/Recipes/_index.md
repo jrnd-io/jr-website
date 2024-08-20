@@ -85,9 +85,7 @@ You can send data using the following simple command:
 jr run user -f 1000ms -l | kafka-avro-console-producer --broker-list broker:<port> --topic <the_topic> --property schema.registry.url=http://<host>:<port> --property value.schema.id=<SCHEMA_ID>
 ```
 
-### Publishing to a Confluent Cloud Cluster
-
-For a more complex setup, such as publishing to a Confluent Cloud cluster, you can use the following command:
+Here is an example to publish to Confluent Cloud:
 
 ```bash
 jr run user -f 1000ms -l | kafka-avro-console-producer --broker-list SASL_SSL://<your-cluster>.<region>.<cp>.confluent.cloud:9092 --producer.config <path_to_your>/config.properties --topic <topic> --property value.schema.id=<schema_id>  --property schema.registry.basic.auth.user.info=<yout_sr_key> --property basic.auth.credentials.source=USER_INFO --property schema.registry.url=https://<your_sr>.<region>.<cp>.confluent.cloud

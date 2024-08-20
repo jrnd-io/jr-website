@@ -94,7 +94,7 @@ make test
 - Clone the JR repository
 
     ```shell
-    git clone https://github.com/ugol/jr
+    git clone https://github.com/jrnd-io/jr
     cd jr
     ```
 

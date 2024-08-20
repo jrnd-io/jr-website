@@ -63,7 +63,8 @@ Let's take a look at the `csv_user` template (included in the distribution):
 }
 ```
 
-This template uses the `fromcsv` function, which looks for the corresponding columns in the CSV file `users.csv`. 
+This template uses the `fromcsv` function, which looks for the corresponding columns in the CSV file `users.csv`.
+
 Here's an example of a sample CSV file's content:
 
 ```bash

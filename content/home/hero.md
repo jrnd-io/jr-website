@@ -17,7 +17,7 @@ cta:
 ---
 Streaming quality Random Data from the Command line
 
-<a class="github-button" href="https://github.com/ugol/jr" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star JR">Star JR on Github</a><br>
+<a class="github-button" href="https://github.com/jrnd-io/jr" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star JR">Star JR on Github</a><br>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 Install **jr** using [Homebrew](https://formulae.brew.sh/formula/jr)

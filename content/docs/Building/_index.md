@@ -13,6 +13,11 @@ type: book # Do not modify.
 ---
 
 To make the most of JR, recompile it from the source. 
+
+Clone the JR repository:
+```shell
+git clone https://github.com/jrnd-io/jr
+```
 This is needed if you want to serialize with AVRO your own templates, though it's NOT needed if you are using AVRO only with the predefined templates)
 
 ## Building JR on Linux/Mac
@@ -94,7 +99,7 @@ make test
 - Clone the JR repository
 
     ```shell
-    git clone https://github.com/ugol/jr
+    git clone https://github.com/jrnd-io/jr
     cd jr
     ```
 

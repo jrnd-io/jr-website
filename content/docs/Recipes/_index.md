@@ -115,3 +115,44 @@ If the key is part of your value, the easiest way is to do something like this
 
 In other words, adding a simple field - or a complex one like in the above example - to the context and naming it `KEY` will be enough. 
 Note that this will override a key generated with the `--keytemplate` option
+
+
+## Insert data into an RDBMS using linux pipe
+
+You can create a template that generates a SQL statement, which you can use with your RDBMS CLI tools to insert data into a database.
+
+For example, if you have a PostgreSQL table defined like this:
+
+```sql
+CREATE TABLE Orders (
+	id SERIAL PRIMARY KEY NOT NULL,
+	itemid INTEGER NOT NULL,
+	quantity INTEGER NOT NULL,
+	customerid INTEGER NOT NULL
+)
+```
+
+You can create a template named `insert.tpl` like this:
+
+```bash
+INSERT INTO Orders (itemid, quantity, customerid) VALUES ({{integer 1 1000}},{{integer 1 10}}, {{integer 1 100}} );
+```
+
+Copy the template to the appropriate path according to your environment, and then run  `jr`, piping the output to your PostgreSQL server:
+
+```bash
+jr run insert -n 10  |psql -h <pgserver> -U <pg_user> -d <pg_database>
+```
+
+You may need to set the `PGPASSWORD` environment variable before running the command:
+
+```bash
+export PGPASSWORD=<pg_user_pwd>
+```
+
+Finally, you can check the new rows inserted with the following command:
+
+```bash
+psql -h <pgserver> -U <pg_user> -d <pg_database> -c "select * from orders"
+```
+

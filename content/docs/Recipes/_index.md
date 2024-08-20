@@ -13,7 +13,7 @@ type: book # Do not modify.
 
 In this section you can find different recipes to solve issues with _jr_ 
 
-## Using CSV
+## Generate CSV output
 
 JR can be used to generate random data and export them to a csv file. This can be easily achieved using a custom template; next example will show how to generate custom data with a custom template and export results to file _city_temperature.csv_
 
@@ -28,6 +28,50 @@ Tucson;36.0
 Cincinnati;31.5
 Houston;24.2
 ```
+
+## The `fromcsv` function: use CSV files as data source in templates
+
+You can use a CSV file as an input or data source for a template. For example, the following command:
+
+```bash
+jr run csv_user --csv users.csv
+```
+
+Generates output that combines random data with values from the CSV file:
+
+```bash
+{
+  "age": 30,
+  "eyeColor": "blue",
+  "name": "John",
+  "surname": "Brown",
+  "company": "Hooli",
+  "email": "john.brown@emeraldcity.oz"
+}
+```
+
+Let's have a look at the `csv_user` template (included in the distribution):
+
+```bash
+{
+  "age": {{integer 20 60}},
+  "eyeColor": "{{randoms "blue|brown|green"}}",
+  "name": "{{fromcsv "NAME"}}",
+  "surname": "{{fromcsv "SURNAME"}}",
+  "company": "{{company}}",
+  "email": "{{lower (fromcsv "NAME") }}.{{lower (fromcsv "SURNAME") }}@emeraldcity.oz"
+}
+```
+
+This template uses the `fromcsv` function, which looks for the corresponding column in the CSV file `users.csv`. Here's an example of what that CSV file might contain:
+
+```bash
+NAME, SURNAME
+John, Brown
+Mary, White
+```
+
+The `fromcsv` function retrieves the appropriate values from the specified columns, allowing you to integrate CSV data into your generated output.
 
 ## Injecting Faults
 

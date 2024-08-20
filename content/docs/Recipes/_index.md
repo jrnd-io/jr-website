@@ -50,7 +50,7 @@ Generates output that combines random data with values from the CSV file:
 }
 ```
 
-Let's have a look at the `csv_user` template (included in the distribution):
+Let's take a look at the `csv_user` template (included in the distribution):
 
 ```bash
 {
@@ -63,7 +63,8 @@ Let's have a look at the `csv_user` template (included in the distribution):
 }
 ```
 
-This template uses the `fromcsv` function, which looks for the corresponding column in the CSV file `users.csv`. Here's an example of what that CSV file might contain:
+This template uses the `fromcsv` function, which looks for the corresponding columns in the CSV file `users.csv`. 
+Here's an example of a sample CSV file's content:
 
 ```bash
 NAME, SURNAME

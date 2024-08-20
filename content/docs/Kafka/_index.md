@@ -183,3 +183,7 @@ The default schemas in JR are located in `pks/types` folder: at the moment the o
 
 If you need additional PII fields or additional templates with PII, you should update `avsc` files in `pkg/types` folder and then recompile JR.
 
+## Dynamic AVRO
+
+System wide templates can natively serialize to AVRO, but user/embedded templates cannot - unless you recompile JR - due to the static nature of the go libraries used.
+[Here](https://jrnd.io/docs/recipes/#dynamic-avro) is a recipe to dynamically serialize to avro your user/embedded templates without recompiling

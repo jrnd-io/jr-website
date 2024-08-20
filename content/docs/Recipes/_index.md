@@ -119,7 +119,7 @@ In other words, adding a simple field - or a complex one like in the above examp
 Note that this will override a key generated with the `--keytemplate` option
 
 
-## Insert data into an RDBMS using linux pipe
+## Insert data into a RDBMS
 
 You can create a template that generates a SQL statement, which you can use with your RDBMS CLI tools to insert data into a database.
 

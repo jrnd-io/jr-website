@@ -13,6 +13,86 @@ type: book # Do not modify.
 
 In this section you can find different recipes to solve issues with _jr_ 
 
+
+## Dynamic AVRO
+
+System wide templates can natively serialize to AVRO, but user/embedded templates cannot - unless you recompile JR - due to the static nature of the go libraries used.
+If you need to serialize with AVRO from a user template and you don't want to recompile JR, here is how to do it.
+You can send JSON messages generated with JR as AVRO messages to a Kafka topic using the `kafka-avro-console-producer` cli tool.
+
+For example, given the following AVRO schema:
+
+```json
+{
+  "fields": [
+    {
+      "name": "addressinfo",
+      "type": [
+        {
+          "fields": [
+            {
+              "name": "city",
+              "type": "string"
+            },
+            {
+              "name": "street",
+              "type": "string"
+            },
+            {
+              "name": "zip",
+              "type": "string"
+            }
+          ],
+          "name": "Addressinfo",
+          "type": "record"
+        }
+      ]
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "surname",
+      "type": "string"
+    }
+  ],
+  "name": "UserInfo",
+  "namespace": "example.kafka",
+  "type": "record"
+}
+```
+
+And a corresponding sample user template for JR:
+
+```json
+{
+    "addressinfo": {
+        "example.kafka.Addressinfo": {
+            "city": "{{city}}",
+            "street": "210 Javier Run",
+            "zip": "{{zip}}"
+        }
+    },
+    "name": "{{name}}",
+    "surname": "{{surname}}"
+}
+```
+
+You can send data using the following simple command:
+
+```bash
+jr run user -f 1000ms -l | kafka-avro-console-producer --broker-list broker:<port> --topic <the_topic> --property schema.registry.url=http://<host>:<port> --property value.schema.id=<SCHEMA_ID>
+```
+
+### Publishing to a Confluent Cloud Cluster
+
+For a more complex setup, such as publishing to a Confluent Cloud cluster, you can use the following command:
+
+```bash
+jr run user -f 1000ms -l | kafka-avro-console-producer --broker-list SASL_SSL://<your-cluster>.<region>.<cp>.confluent.cloud:9092 --producer.config <path_to_your>/config.properties --topic <topic> --property value.schema.id=<schema_id>  --property schema.registry.basic.auth.user.info=<yout_sr_key> --property basic.auth.credentials.source=USER_INFO --property schema.registry.url=https://<your_sr>.<region>.<cp>.confluent.cloud
+```
+
 ## Getting the Key from the Value
 
 If the key is part of your value, the easiest way is to do something like this
@@ -156,81 +236,4 @@ Finally, you can check the new rows inserted with the following command:
 
 ```bash
 psql -h <pgserver> -U <pg_user> -d <pg_database> -c "select * from orders"
-```
-
-## Sending AVRO Messages with kafka-avro-console-producer
-
-You can send JSON messages generated with JR as AVRO messages to a Kafka topic using the `kafka-avro-console-producer` cli tool.
-
-For example, given the following AVRO schema:
-
-```json
-{
-  "fields": [
-    {
-      "name": "addressinfo",
-      "type": [
-        {
-          "fields": [
-            {
-              "name": "city",
-              "type": "string"
-            },
-            {
-              "name": "street",
-              "type": "string"
-            },
-            {
-              "name": "zip",
-              "type": "string"
-            }
-          ],
-          "name": "Addressinfo",
-          "type": "record"
-        }
-      ]
-    },
-    {
-      "name": "name",
-      "type": "string"
-    },
-    {
-      "name": "surname",
-      "type": "string"
-    }
-  ],
-  "name": "UserInfo",
-  "namespace": "example.kafka",
-  "type": "record"
-}
-```
-
-And a corresponding sample user template for JR:
-
-```json
-{
-    "addressinfo": {
-        "example.kafka.Addressinfo": {
-            "city": "{{city}}",
-            "street": "210 Javier Run",
-            "zip": "{{zip}}"
-        }
-    },
-    "name": "{{name}}",
-    "surname": "{{surname}}"
-}
-```
-
-You can send data using the following simple command:
-
-```bash
-jr run user -f 1000ms -l | kafka-avro-console-producer --broker-list broker:<port> --topic <the_topic> --property schema.registry.url=http://<host>:<port> --property value.schema.id=<SCHEMA_ID>
-```
-
-### Publishing to a Confluent Cloud Cluster
-
-For a more complex setup, such as publishing to a Confluent Cloud cluster, you can use the following command:
-
-```bash
-jr run user -f 1000ms -l | kafka-avro-console-producer --broker-list SASL_SSL://<your-cluster>.<region>.<cp>.confluent.cloud:9092 --producer.config <path_to_your>/config.properties --topic <topic> --property value.schema.id=<schema_id>  --property schema.registry.basic.auth.user.info=<yout_sr_key> --property basic.auth.credentials.source=USER_INFO --property schema.registry.url=https://<your_sr>.<region>.<cp>.confluent.cloud
 ```

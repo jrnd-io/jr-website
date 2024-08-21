@@ -13,6 +13,7 @@ type: book # Do not modify.
 ---
 
 This section contains all the available functions in JR Templates.
+
 There are 10 different categories
 
 - [Address](#address-functions)

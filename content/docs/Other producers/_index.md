@@ -17,7 +17,7 @@ type: book # Do not modify.
 You can use JR to stream data to many different stores, not only to standard output and Kafka. 
 JR supports natively several different producers: you can also easily `jr run template | CLI-tool-to-your-store` if your preferred store is not natively supported. 
 
-Look at this [Postgres recipe](https://jrnd.io/docs/recipes/#insert-data-into-a-rdbms) for example: though Postgres is not natively supported, it's pretty easy to use JR to produce data for it.
+Look at this [Postgres recipe](../recipes/#insert-data-into-a-rdbms) for example: though Postgres is not natively supported, it's pretty easy to use JR to produce data for it.
 
 If you think that your preferred store should be supported, why not [implement it](#implementing-other-producers)? Or just open up [an issue](https://github.com/jrnd-io/jr/issues) and we'll do that for you!
 
@@ -71,7 +71,7 @@ Amazon S3 Configuration in `config.json`
 
 `--azBlobStorageConfig` parameter to add a Azure Blob Storage configuration 
 
-Azure Blob Storge Configuration exampele:
+Azure Blob Storage Configuration example:
 
 ```json
 {
@@ -280,7 +280,15 @@ end
 
 ## AWS Dynamo DB
 
+`--output = awsdynamodb`
 
+`--awsDynamoDBConfig` parameter to add a AWS DynamoDB configuration
+
+AWS DynamoDB Configuration:
+
+```json
+TODO
+```
 
 ## Implementing other Producers
 

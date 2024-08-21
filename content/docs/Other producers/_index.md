@@ -26,7 +26,7 @@ jr producer list
 ```
 
 - Console * (default, but you can also make it explicit with `--output = stdout`)
-- [Kafka](https://jrnd.io/docs/kafka) (`--output = kafka`)
+- [Kafka](../kafka) (`--output = kafka`)
 - [HTTP](#http-producer) (`--output = http`)
 - [Redis](#redis-producer) (`--output = redis`)
 - [Mongodb](#mongodb-producer) (`--output = mongo`)

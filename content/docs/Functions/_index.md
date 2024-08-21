@@ -16,15 +16,15 @@ This section contains all the available functions in JR Templates.
 There are 10 different categories
 
 - [Address](#address-functions)
-- Context
-- Finance
-- Math
-- Network
-- People
-- Phone
-- Time
-- Text 
-- Utilities
+- [Context](#context-functions)
+- [Date and Time](#date-and-time-functions)
+- [Finance](#finance-functions)
+- [Math](#math-functions)
+- [Network](#network-functions)
+- [People](#people-functions)
+- [Phone](#phone-functions)
+- [Text](#text-functions) 
+- [Utilities](#utilities-functions)
 
 You can look at this list via ```jr man``` command.
 
@@ -332,7 +332,7 @@ You can look at this list via ```jr man``` command.
 **Output:** `1679703304`
 
 
-## Finance functions 
+## Finance functions
 
 ### account
 **Category:** finance\

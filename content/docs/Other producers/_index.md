@@ -14,31 +14,31 @@ type: book # Do not modify.
 
 ## Use JR to stream data to external stores
 
-You can use JR to stream data to many different stores, not only Kafka. 
+You can use JR to stream data to many different stores, not only to standard output and Kafka. 
 JR supports natively several different producers: you can also easily `jr run template | CLI-tool-to-your-store` if your preferred store is not natively supported. 
+
+Look at this [Postgres recipe](https://jrnd.io/docs/recipes/#insert-data-into-a-rdbms) for example: though Postgres is not natively supported, it's pretty easy to use JR to produce data for it.
+
 If you think that your preferred store should be supported, why not [implement it](#implementing-other-producers)? Or just open up [an issue](https://github.com/jrnd-io/jr/issues) and we'll do that for you!
 
 ```bash
 jr producer list
 ```
 
-You'll get an output similar to:
-```
-List of JR producers:
+- Console * (this is the default, you can also make it explicit with `--output = stdout`)
+- [Kafka](https://jrnd.io/docs/kafka) (`--output = kafka`)
+- [HTTP](#http-producer) (`--output = http`)
+- [Redis](#redis-producer) (`--output = redis`)
+- [Mongodb](#mongodb-producer) (`--output = mongo`)
+- [Elastic](#elastic-search-producer) (`--output = elastic`)
+- [S3](#aws-s3-producer) (`--output = s3`)
+- [GCS](#google-cloud-storage-producer) (`--output = gcs`)
+- [AZBlobStorage](#azure-blob-storage-producer) (`--output = azblobstorage`)
+- [AZCosmosDB](#azure-cosmos-db-producer) (`--output = azcosmosdb`)
+- [Cassandra](#cassandra-producer) (`--output = cassandra`)
+- [LUA Script](#lua-script) (`--output = luascript`)
+- [AWS DynamoDB](#aws-dynamodb) (`--output = awsdynamodb`)
 
-Console * (--output = stdout)
-Kafka (--output = kafka)
-Redis (--output = redis)
-Mongodb (--output = mongo)
-Elastic (--output = elastic)
-S3 (--output = s3)
-GCS (--output = gcs)
-Azure Blob Storage (--output = azblobstorage)
-Azure Cosmos DB (--output = azcosmosdb)
-Cassandra (--output = cassandra)
-HTTP (--output = http)
-
-```
 to use an output, just set the corresponding value in `--output`
 
 Every output needs also a corresponding configuration.
@@ -242,6 +242,45 @@ MongoDB Atlas Configuration:
   "password": "<password>"
 }
 ```
+
+## LUA Script
+
+An interesting and flexible JR output is LUA scripting. 
+With this producer, you can basically do whatever you want, directly scripting JR with [LUA](https://lua.org).
+
+This producer uses the [GOPHER Lua plugin](https://github.com/yuin/gopher-lua) nad includes by default all the [GOPHER LUA libs](https://github.com/vadv/gopher-lua-libs)  
+
+To test it:
+
+`jr run net_device -o luascript  --luascriptConfig ./lua/luaConfig.json`
+
+where the `luaConfig.json` contains
+
+```json
+{
+      "script_file":"~/examples/http.lua"
+}
+
+```
+
+the `http.lua` in this example just POST the value on a URL.
+
+```lua
+local http = require("http")
+local client = http.client()
+local request = http.request("POST","http://localhost:8085",v)
+local result, err = client:do_request(request)
+if err then
+    error(err)
+end
+if not (result.code == 200) then
+    error("code")
+end
+```
+
+## AWS Dynamo DB
+
+
 
 ## Implementing other Producers
 

@@ -244,6 +244,81 @@ You can look at this list via ```jr man``` command.
 **Example:** `jr template run --embedded '{{set_v "id" "12770"}}{{get_v "id"}}'`\
 **Output:** `12770`
 
+## Date and Time functions
+
+### birthdate
+**Category:** time\
+**Description:** generates a birthdate in a given age range\
+**Parameters:** `minAge int, maxAge int`\
+**Localizable:** `false`\
+**Return:** `[]string`\
+**Example:** `jr template run --embedded '{{birthdate 1 23}}'`\
+**Output:** `2018-06-09`
+
+### date_between
+**Category:** time\
+**Description:** generates a date between given from and to\
+**Parameters:** `from string, to string`\
+**Localizable:** `false`\
+**Return:** `string`\
+**Example:** `jr template run --embedded '{{date_between "1970-12-07" "1990-12-07"}}'`\
+**Output:** `1985-06-29`
+
+### dates_between
+**Category:** time\
+**Description:** generates an array of num dates between given from and to\
+**Parameters:** `from string, to string, num int`\
+**Localizable:** `false`\
+**Return:** `[]string`\
+**Example:** `jr template run --embedded '{{dates_between "1970-12-07" "1990-12-07" 3}}'`\
+**Output:** `[1974-12-27 1987-06-07 1985-08-18]`
+
+### future
+**Category:** time\
+**Description:** returns a date in the future not after the given years\
+**Parameters:** `years int`\
+**Localizable:** `false`\
+**Return:** `string`\
+**Example:** `jr template run --embedded '{{future 5}}'`\
+**Output:** `2022-05-08`
+
+### past
+**Category:** time\
+**Description:** returns a date in the past not before the given years\
+**Parameters:** `years int`\
+**Localizable:** `false`\
+**Return:** `string`\
+**Example:** `jr template run --embedded '{{past 5}}'`\
+**Output:** `2022-05-08`
+
+### recent
+**Category:** time\
+**Description:** returns a date in the past not before the given days\
+**Parameters:** `days int`\
+**Localizable:** `false`\
+**Return:** `string`\
+**Example:** `jr template run --embedded '{{recent 15}}'`\
+**Output:** `2023-04-17`
+
+### soon
+**Category:** time\
+**Description:** returns a date in the future not after the given days\
+**Parameters:** `days int`\
+**Localizable:** `false`\
+**Return:** `string`\
+**Example:** `jr template run --embedded '{{soon 15}}'`\
+**Output:** `2023-04-25`
+
+### unix_time_stamp
+**Category:** time\
+**Description:** returns a random unix timestamp not older than the given number of days\
+**Parameters:** `days int`\
+**Localizable:** `false`\
+**Return:** `int64`\
+**Example:** `jr template run --embedded '{{unix_time_stamp 10}}'`\
+**Output:** `1679703304`
+
+
 ## Finance functions 
 
 ### account

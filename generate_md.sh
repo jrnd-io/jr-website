@@ -7,3 +7,4 @@ jr man -c context -m >> ~/Desktop/context.md
 jr man -c math -m >> ~/Desktop/math.md
 jr man -c finance -m >> ~/Desktop/finance.md
 jr man -c text -m >> ~/Desktop/text.md
+jr man -c time -m >> ~/Desktop/time.md

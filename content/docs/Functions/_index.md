@@ -13,6 +13,19 @@ type: book # Do not modify.
 ---
 
 This section contains all the available functions in JR Templates.
+There are 10 different categories
+
+- Address
+- Context
+- Finance
+- Math
+- Network
+- People
+- Phone
+- Time
+- Text 
+- Utilities
+
 You can look at this list via ```jr man``` command.
 
 ## Address functions

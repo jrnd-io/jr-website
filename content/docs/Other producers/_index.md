@@ -25,7 +25,7 @@ If you think that your preferred store should be supported, why not [implement i
 jr producer list
 ```
 
-- Console * (this is the default, you can also make it explicit with `--output = stdout`)
+- Console * (default, but you can also make it explicit with `--output = stdout`)
 - [Kafka](https://jrnd.io/docs/kafka) (`--output = kafka`)
 - [HTTP](#http-producer) (`--output = http`)
 - [Redis](#redis-producer) (`--output = redis`)

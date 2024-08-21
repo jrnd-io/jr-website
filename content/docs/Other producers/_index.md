@@ -37,7 +37,7 @@ jr producer list
 - [AZCosmosDB](#azure-cosmos-db-producer) (`--output = azcosmosdb`)
 - [Cassandra](#cassandra-producer) (`--output = cassandra`)
 - [LUA Script](#lua-script) (`--output = luascript`)
-- [AWS DynamoDB](#aws-dynamodb) (`--output = awsdynamodb`)
+- [AWS DynamoDB](#aws-dynamo-db) (`--output = awsdynamodb`)
 
 to use an output, just set the corresponding value in `--output`
 

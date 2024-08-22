@@ -13,11 +13,11 @@ type: book # Do not modify.
 
 ## Global section
 
-JR can be configured via a json file called jrconfig.json. This file could be everywhere in the `$PATH`, in current dir (`.`) or in the `$JR_HOME` directory.
-`$JR_HOME` defaults to `$HOME/.jr` but can easily be changed setting an environment variable:
+JR can be configured via a json file called jrconfig.json. This file could be everywhere in the `$PATH`, in current dir (`.`) or in the `$JR_SYSTEM_DIR` directory.
+`$JR_SYSTEM_DIR` defaults to JR_SYSTEM_DIR is the [XDG](https://specifications.freedesktop.org/basedir-spec/latest/) standard for your Operating System but can easily be changed setting an environment variable:
 
 ```bash
-JR_HOME=~/jrconfig/ jr template list
+JR_SYSTEM_DIR=~/jrconfig/ jr template list
 ````
 jrconfig has a global section and an emitter section
 

@@ -308,8 +308,8 @@ where the `wasmConfig.json` contains
 
 ```
 
-The `wasm_producer_test_function.wasm` is obtained compiling with `tinygo` the wasm_producer_test_function.go example: 
-This simple example just prints the value on standard output.
+The `wasm_producer_test_function.wasm` is obtained compiling with `tinygo` the `wasm_producer_test_function.go` example: 
+This simple example just prints the value on standard output, but you have maximum flexibility to do whatever you want.
 
 ```
 //go:build tinygo.wasm

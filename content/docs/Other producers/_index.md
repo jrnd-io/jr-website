@@ -297,7 +297,16 @@ Similar to Lua, you can also script JR with a WASM producer.
 
 To test it:
 
-`jr run net_device -o wasm  --wasmConfig ./wasm/wasm_producer_test_function.wasm`
+`jr run net_device -o wasm  --wasmConfig ./wasm/wasmConfig.json`
+
+where the `wasmConfig.json` contains
+
+```json
+{
+      "ModulePath":"~/examples/wasm_producer_test_function.wasm"
+}
+
+```
 
 The `wasm_producer_test_function.wasm` is obtained compiling with `tinygo` the wasm_producer_test_function.go example: 
 This simple example just prints the value on standard output.

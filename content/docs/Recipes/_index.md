@@ -104,6 +104,8 @@ If the key is part of your value, the easiest way is to do something like this
     "gender": "{{randoms "MALE|FEMALE|OTHER"}}"
 }
 ```
+In other words, adding a simple field - or a complex one like in the above example - to the context and naming it `KEY` will be enough.
+Note that this will override a key generated with the `--keytemplate` option
 
 ## Generate CSV
 
@@ -191,11 +193,6 @@ You can also run this `inject` example directly from the command line
 ```bash
 jr man inject --run
 ```
-
-
-In other words, adding a simple field - or a complex one like in the above example - to the context and naming it `KEY` will be enough. 
-Note that this will override a key generated with the `--keytemplate` option
-
 
 ## Insert data into a RDBMS
 

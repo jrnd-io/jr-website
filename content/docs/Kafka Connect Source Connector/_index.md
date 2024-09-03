@@ -22,6 +22,7 @@ JR Source Connector can be configured with:
  - _topic_: target topic
  - _frequency_: Repeat the creation of a random message every `frequency` milliseconds.
  - _objects_: Number of objects to create at every run. Default is 1.
+ - _key_field_: Name for object key field, for example ID. This is an OPTIONAL config, if not set, objects will be created without a key.
 
 Following example is for a JR connector job using template _net_device_ and producing 5 new random messages to _net_device_ topic every 5 seconds.
 
@@ -34,6 +35,23 @@ Following example is for a JR connector job using template _net_device_ and prod
         "topic": "net_device",
         "frequency" : 5000,
         "objects": 5,
+        "tasks.max": 1
+    }
+}
+```
+
+Following example is for a JR connector job using template _users_ and producing 5 new random messages to _users_ topic every 5 seconds, using a message key field named USERID with a random integer value.
+
+```json
+{
+    "name" : "jr-keys-quickstart",
+    "config": {
+        "connector.class" : "io.jrnd.kafka.connect.connector.JRSourceConnector",
+        "template" : "users",
+        "topic": "users",
+        "frequency" : 5000,
+        "objects": 5,
+        "key_field": "USERID",
         "tasks.max": 1
     }
 }

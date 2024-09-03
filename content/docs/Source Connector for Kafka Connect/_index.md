@@ -1,7 +1,7 @@
 ---
 # Title, summary, and page position.
 linktitle: Source Connector for Kafka Connect
-weight: 650
+weight: 550
 #icon: book
 icon_pack: fas
 
@@ -11,15 +11,16 @@ date: '2024-09-02T00:00:00Z'
 type: book # Do not modify.
 ---
 
-## Source Connector for Kafka Connect
+## Kafka Connect Source Connector
 
-JR provides a Source Connector for Apache Kafka Connect, generating random data and writes it into a Kafka topic. 
+JR provides a Source Connector for Apache Kafka Connect.
+This is useful if you are migrating from [Kafka Connect Datagen](https://github.com/confluentinc/kafka-connect-datagen)
 
 JR Source Connector can be configured with:
 
  - _template_: A valid JR existing template name. For a list of available templates see: https://jrnd.io/docs/#listing-existing-templates
  - _topic_: target topic
- - _frequency_: Repeat the creation of a random message every X milliseconds.
+ - _frequency_: Repeat the creation of a random message every `frequency` milliseconds.
  - _objects_: Number of objects to create at every run. Default is 1.
 
 Following example is for a JR connector job using template _net_device_ and producing 5 new random messages to _net_device_ topic every 5 seconds.

@@ -22,7 +22,7 @@ JR Source Connector can be configured with:
  - _topic_: target topic
  - _frequency_: Repeat the creation of a random message every `frequency` milliseconds.
  - _objects_: Number of objects to create at every run. Default is 1.
- - _key_field_: Name for object key field, for example ID. This is an OPTIONAL config, if not set, objects will be created without a key.
+ - _key_field_: Name for object key field, for example 'ID'. This is an _OPTIONAL_ config, if not set, objects will be created without a key. Value for key will be calculated using JR function key, https://jrnd.io/docs/functions/#key
 
 Following example is for a JR connector job using template _net_device_ and producing 5 new random messages to _net_device_ topic every 5 seconds.
 

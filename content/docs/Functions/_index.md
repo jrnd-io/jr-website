@@ -833,7 +833,7 @@ You can look at this list via ```jr man``` command.
 
 ### concat
 **Category:** text\
-**Description:** converts an integer to a string\
+**Description:** concatenates two strings\
 **Parameters:** `string string`\
 **Localizable:** `false`\
 **Return:** `string`\

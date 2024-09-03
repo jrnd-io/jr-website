@@ -1187,7 +1187,7 @@ You can look at this list via ```jr man``` command.
 **Localizable:** `false`\
 **Return:** ``\
 **Example:** `jr template run --embedded '{{seed 12345}}'`\
-**Output:** ``
+**Output:** `no output`
 
 ### uuid
 **Category:** utilities\

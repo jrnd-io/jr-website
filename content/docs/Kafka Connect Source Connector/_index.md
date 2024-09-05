@@ -18,11 +18,12 @@ This is useful if you are migrating from [Kafka Connect Datagen](https://github.
 
 JR Source Connector can be configured with:
 
- - _template_: A valid JR existing template name. For a list of available templates see: https://jrnd.io/docs/#listing-existing-templates
- - _topic_: target topic
- - _frequency_: Repeat the creation of a random message every `frequency` milliseconds.
- - _objects_: Number of objects to create at every run. Default is 1.
- - _key_field_: Name for object key field, for example 'ID'. This is an _OPTIONAL_ config, if not set, objects will be created without a key. Value for key will be calculated using JR function key, https://jrnd.io/docs/functions/#key
+- _template_: A valid JR existing template name. For a list of available templates see: https://jrnd.io/docs/#listing-existing-templates
+- _topic_: target topic
+- _frequency_: Repeat the creation of a random object every X milliseconds.
+- _objects_: Number of objects to create at every run. Default is 1.
+- _key_field_name_: Name for key field, for example 'ID'. This is an _OPTIONAL_ config, if not set, objects will be created without a key. Value for key will be calculated using JR function _key_, https://jrnd.io/docs/functions/#key
+- _key_value_length_: Length for key value, for example 150. Default is 100. This is an _OPTIONAL_ config, if not set, length will be 100.
 
 Following example is for a JR connector job using template _net_device_ and producing 5 new random messages to _net_device_ topic every 5 seconds.
 
@@ -47,7 +48,7 @@ null	{"VLAN": "BETA","IPV4_SRC_ADDR": "10.1.95.4","IPV4_DST_ADDR": "10.1.239.68"
 null	{"VLAN": "DELTA","IPV4_SRC_ADDR": "10.1.126.149","IPV4_DST_ADDR": "10.1.219.156","IN_BYTES": 1767,"FIRST_SWITCHED": 1721931269,"LAST_SWITCHED": 1724976862,"L4_SRC_PORT": 631,"L4_DST_PORT": 80,"TCP_FLAGS": 0,"PROTOCOL": 1,"SRC_TOS": 139,"SRC_AS": 0,"DST_AS": 1,"L7_PROTO": 22,"L7_PROTO_NAME": "TCP","L7_PROTO_CATEGORY": "Application"}
 ```
 
-Following example is for a JR connector job using template _users_ and producing 5 new random messages to _users_ topic every 5 seconds, using a message key field named USERID with a random integer value.
+Following example is for a JR connector job using template _users_ and producing 5 new random messages to _users_ topic every 5 seconds, using a message key field named USERID with a random integer value between 0 and 150.
 
 ```json
 {
@@ -59,6 +60,7 @@ Following example is for a JR connector job using template _users_ and producing
         "frequency" : 5000,
         "objects": 5,
         "key_field": "USERID",
+        "key_value_length": 150,
         "tasks.max": 1
     }
 }

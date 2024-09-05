@@ -23,7 +23,8 @@ JR Source Connector can be configured with:
 - _frequency_: Repeat the creation of a random object every X milliseconds.
 - _objects_: Number of objects to create at every run. Default is 1.
 - _key_field_name_: Name for key field, for example 'ID'. This is an _OPTIONAL_ config, if not set, objects will be created without a key. Value for key will be calculated using JR function _key_, https://jrnd.io/docs/functions/#key
-- _key_value_length_: Length for key value, for example 150. Default is 100. This is an _OPTIONAL_ config, if not set, length will be 100.
+- _key_value_length_: Length for key value, for example 150. This is an _OPTIONAL_ config, if not set, length will be 100.
+- _jr_executable_path_: Location for JR executable on workers. If not set, JR executable will be searched using $PATH variable.
 
 Following example is for a JR connector job using template _net_device_ and producing 5 new random messages to _net_device_ topic every 5 seconds.
 
@@ -61,6 +62,7 @@ Following example is for a JR connector job using template _users_ and producing
         "objects": 5,
         "key_field": "USERID",
         "key_value_length": 150,
+        "jr_executable_path": "/usr/bin",
         "tasks.max": 1
     }
 }

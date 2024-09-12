@@ -23,7 +23,7 @@ JR Source Connector can be configured with:
 - _frequency_: Repeat the creation of a random object every X milliseconds.
 - _objects_: Number of objects to create at every run. Default is 1.
 - _key_field_name_: Name for key field, for example 'ID'. This is an _OPTIONAL_ config, if not set, objects will be created without a key. Value for key will be calculated using JR function _key_, https://jrnd.io/docs/functions/#key
-- _key_value_length_: Length for key value, for example 150. This is an _OPTIONAL_ config, if not set, length will be 100.
+- _key_value_interval_max_: Maximum interval value for key value, for example 150 (0 to key_value_interval_max). Default is 100.
 - _jr_executable_path_: Location for JR executable on workers. If not set, JR executable will be searched using $PATH variable.
 
 Following example is for a JR connector job using template _net_device_ and producing 5 new random messages to _net_device_ topic every 5 seconds.
@@ -61,7 +61,7 @@ Following example is for a JR connector job using template _users_ and producing
         "frequency" : 5000,
         "objects": 5,
         "key_field": "USERID",
-        "key_value_length": 150,
+        "key_value_interval_max": 150,
         "jr_executable_path": "/usr/bin",
         "tasks.max": 1
     }
@@ -75,6 +75,34 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic users --from-be
 {"USERID":61}	{    "registertime": 1491758270753,    "USERID":61,    "regionid": "Region_8",    "gender": "FEMALE"}
 {"USERID":86}	{    "registertime": 1515055706490,    "USERID":86,    "regionid": "Region_6",    "gender": "MALE"}
 {"USERID":71}	{    "registertime": 1491441559667,    "USERID":71,    "regionid": "Region_6",    "gender": "OTHER"}
+```
+
+A JR connector job for template _store_ will be instantiated and produce 5 new random messages to _store_ topic every 5 seconds, using the Confluent Schema Registry to register the Avro schema.
+
+```
+{
+    "name" : "jr-avro-quickstart",
+    "config": {
+        "connector.class" : "io.jrnd.kafka.connect.connector.JRSourceConnector",
+        "template" : "store",
+        "topic": "store",
+        "frequency" : 5000,
+        "objects": 5,
+        "value.converter": "io.confluent.connect.avro.AvroConverter",
+        "value.converter.schema.registry.url": "http://schema-registry:8081",
+        "tasks.max": 1
+    }
+}
+```
+
+```
+kafka-avro-console-consumer --bootstrap-server localhost:9092 --topic store --from-beginning --property schema.registry.url=http://localhost:8081
+
+{"store_id":1,"city":"Minneapolis","state":"AR"}
+{"store_id":2,"city":"Baltimore","state":"LA"}
+{"store_id":3,"city":"Chicago","state":"IL"}
+{"store_id":4,"city":"Chicago","state":"MN"}
+{"store_id":5,"city":"Washington","state":"OH"}
 ```
 
 Additional details are listed in the [official repository](https://github.com/jrnd-io/jr-kafka-connect-source).

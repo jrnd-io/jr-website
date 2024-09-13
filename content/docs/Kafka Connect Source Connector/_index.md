@@ -79,7 +79,7 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic users --from-be
 
 A JR connector job for template _store_ will be instantiated and produce 5 new random messages to _store_ topic every 5 seconds, using the Confluent Schema Registry to register the Avro schema.
 
-```
+```json
 {
     "name" : "jr-avro-quickstart",
     "config": {
@@ -104,5 +104,17 @@ kafka-avro-console-consumer --bootstrap-server localhost:9092 --topic store --fr
 {"store_id":4,"city":"Chicago","state":"MN"}
 {"store_id":5,"city":"Washington","state":"OH"}
 ```
+
+Show the _Avro_ schema registered:
+
+```
+curl -v http://localhost:8081/subjects/store-value/versions/1/schema
+< HTTP/1.1 200 OK
+< Content-Type: application/vnd.schemaregistry.v1+json
+
+
+{"type":"record","name":"storeRecord","fields":[{"name":"store_id","type":"int"},{"name":"city","type":"string"},{"name":"state","type":"string"}],"connect.name":"storeRecord"}
+```
+
 
 Additional details are listed in the [official repository](https://github.com/jrnd-io/jr-kafka-connect-source).

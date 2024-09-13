@@ -18,13 +18,18 @@ This is useful if you are migrating from [Kafka Connect Datagen](https://github.
 
 JR Source Connector can be configured with:
 
-- _template_: A valid JR existing template name. For a list of available templates see: https://jrnd.io/docs/#listing-existing-templates
-- _topic_: target topic
-- _frequency_: Repeat the creation of a random object every X milliseconds.
-- _objects_: Number of objects to create at every run. Default is 1.
-- _key_field_name_: Name for key field, for example 'ID'. This is an _OPTIONAL_ config, if not set, objects will be created without a key. Value for key will be calculated using JR function _key_, https://jrnd.io/docs/functions/#key
-- _key_value_interval_max_: Maximum interval value for key value, for example 150 (0 to key_value_interval_max). Default is 100.
-- _jr_executable_path_: Location for JR executable on workers. If not set, JR executable will be searched using $PATH variable.
+ - _**template**_: A valid JR existing template name. For a list of available templates see: https://jrnd.io/docs/#listing-existing-templates
+ - _**topic**_: target topic
+ - _**frequency**_: Repeat the creation of a random object every X milliseconds.
+ - _**objects**_: Number of objects to create at every run. Default is 1.
+- _**key_field_name**_: Name for key field, for example 'ID'. This is an _OPTIONAL_ config, if not set, objects will be created without a key. Value for key will be calculated using JR function _key_, https://jrnd.io/docs/functions/#key
+- _**key_value_interval_max**_: Maximum interval value for key value, for example 150 (0 to key_value_interval_max). Default is 100.
+- _**jr_executable_path**_: Location for JR executable on workers. If not set, jr executable will be searched using $PATH variable.
+- _**value.converter**_: one between _org.apache.kafka.connect.storage.StringConverter_, _io.confluent.connect.avro.AvroConverter_ or _io.confluent.connect.json.JsonSchemaConverter_
+- _**value.converter.schema.registry.url**_: Only if _value.converter_ is set to _io.confluent.connect.avro.AvroConverter_. URL for Confluent Schema Registry.
+
+At the moment for keys the supported format is _String_.
+For values there is also support for _Confluent Schema Registry_ with _Avro or Json schemas_ are supported.
 
 Following example is for a JR connector job using template _net_device_ and producing 5 new random messages to _net_device_ topic every 5 seconds.
 
@@ -114,6 +119,45 @@ curl -v http://localhost:8081/subjects/store-value/versions/1/schema
 
 
 {"type":"record","name":"storeRecord","fields":[{"name":"store_id","type":"int"},{"name":"city","type":"string"},{"name":"state","type":"string"}],"connect.name":"storeRecord"}
+```
+
+A JR connector job for template _payment_credit_card_ will be instantiated and produce 5 new random messages to _payment_credit_card_ topic every 5 seconds, using the _Confluent Schema Registry_ to register the _Json_ schema.
+
+```
+{
+    "name" : "jr-jsonschema-quickstart",
+    "config": {
+        "connector.class" : "io.jrnd.kafka.connect.connector.JRSourceConnector",
+        "template" : "payment_credit_card",
+        "topic": "payment_credit_card",
+        "frequency" : 5000,
+        "objects": 5,
+        "value.converter": "io.confluent.connect.json.JsonSchemaConverter",
+        "value.converter.schema.registry.url": "http://schema-registry:8081",
+        "tasks.max": 1
+    }
+}
+```
+
+```
+kafka-json-schema-console-consumer --bootstrap-server localhost:9092 --topic payment_credit_card --from-beginning --property schema.registry.url=http://localhost:8081
+
+{"cvv":"070","card_number":"4086489674117803","expiration_date":"10/24","card_id":1.0}
+{"cvv":"505","card_number":"346185299753204","expiration_date":"09/27","card_id":2.0}
+{"cvv":"690","card_number":"47606709930001","expiration_date":"12/24","card_id":3.0}
+{"cvv":"706","card_number":"4936815806226074","expiration_date":"08/24","card_id":4.0}
+{"cvv":"855","card_number":"4782025916077384","expiration_date":"09/22","card_id":5.0}
+```
+
+Show the _Json_ schema registered:
+
+```
+curl -v http://localhost:8081/subjects/payment_credit_card-value/versions/1/schema
+< HTTP/1.1 200 OK
+< Content-Type: application/vnd.schemaregistry.v1+json
+
+
+{"type":"object","properties":{"cvv":{"type":"string","connect.index":2},"card_number":{"type":"string","connect.index":1},"expiration_date":{"type":"string","connect.index":3},"card_id":{"type":"number","connect.index":0,"connect.type":"float64"}}}%
 ```
 
 

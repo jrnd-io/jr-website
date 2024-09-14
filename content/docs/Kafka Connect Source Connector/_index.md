@@ -25,11 +25,11 @@ JR Source Connector can be configured with:
 - _**key_field_name**_: Name for key field, for example 'ID'. This is an _OPTIONAL_ config, if not set, objects will be created without a key. Value for key will be calculated using JR function _key_, https://jrnd.io/docs/functions/#key
 - _**key_value_interval_max**_: Maximum interval value for key value, for example 150 (0 to key_value_interval_max). Default is 100.
 - _**jr_executable_path**_: Location for JR executable on workers. If not set, jr executable will be searched using $PATH variable.
-- _**value.converter**_: one between _org.apache.kafka.connect.storage.StringConverter_, _io.confluent.connect.avro.AvroConverter_ or _io.confluent.connect.json.JsonSchemaConverter_
-- _**value.converter.schema.registry.url**_: Only if _value.converter_ is set to _io.confluent.connect.avro.AvroConverter_ or _io.confluent.connect.json.JsonSchemaConverter_. URL for Confluent Schema Registry.
+- _**value.converter**_: one between _org.apache.kafka.connect.storage.StringConverter_, _io.confluent.connect.avro.AvroConverter_, _io.confluent.connect.json.JsonSchemaConverter_ or _io.confluent.connect.protobuf.ProtobufConverter_
+- _**value.converter.schema.registry.url**_: Only if _value.converter_ is set to _io.confluent.connect.avro.AvroConverter_, _io.confluent.connect.json.JsonSchemaConverter_ or _io.confluent.connect.protobuf.ProtobufConverter_. URL for Confluent Schema Registry.
 
 At the moment for keys the supported format is _String_.
-For values there is also support for _Confluent Schema Registry_ with _Avro or Json schemas_ are supported.
+For values there is also support for _Confluent Schema Registry_ with _Avro, Json and Protobuf schemas_.
 
 Following example is for a JR connector job using template _net_device_ and producing 5 new random messages to _net_device_ topic every 5 seconds.
 
@@ -54,9 +54,11 @@ null	{"VLAN": "BETA","IPV4_SRC_ADDR": "10.1.95.4","IPV4_DST_ADDR": "10.1.239.68"
 null	{"VLAN": "DELTA","IPV4_SRC_ADDR": "10.1.126.149","IPV4_DST_ADDR": "10.1.219.156","IN_BYTES": 1767,"FIRST_SWITCHED": 1721931269,"LAST_SWITCHED": 1724976862,"L4_SRC_PORT": 631,"L4_DST_PORT": 80,"TCP_FLAGS": 0,"PROTOCOL": 1,"SRC_TOS": 139,"SRC_AS": 0,"DST_AS": 1,"L7_PROTO": 22,"L7_PROTO_NAME": "TCP","L7_PROTO_CATEGORY": "Application"}
 ```
 
-Following example is for a JR connector job using template _users_ and producing 5 new random messages to _users_ topic every 5 seconds, using a message key field named USERID with a random integer value between 0 and 150.
+### Usage of keys
 
-```json
+A JR connector job for template _users_ will be instantiated and produce 5 new random messages to _users_ topic every 5 seconds, using a message key field named USERID set with a random integer value between 0 and 150.
+
+```
 {
     "name" : "jr-keys-quickstart",
     "config": {
@@ -65,7 +67,7 @@ Following example is for a JR connector job using template _users_ and producing
         "topic": "users",
         "frequency" : 5000,
         "objects": 5,
-        "key_field": "USERID",
+        "key_field_name": "USERID",
         "key_value_interval_max": 150,
         "jr_executable_path": "/usr/bin",
         "tasks.max": 1
@@ -75,6 +77,7 @@ Following example is for a JR connector job using template _users_ and producing
 
 ```
 kafka-console-consumer --bootstrap-server localhost:9092 --topic users --from-beginning --property print.key=true
+
 {"USERID":40}	{    "registertime": 1490191925954,    "USERID":40,    "regionid": "Region_1",    "gender": "MALE"}
 {"USERID":53}	{    "registertime": 1490996658353,    "USERID":53,    "regionid": "Region_8",    "gender": "FEMALE"}
 {"USERID":61}	{    "registertime": 1491758270753,    "USERID":61,    "regionid": "Region_8",    "gender": "FEMALE"}
@@ -82,9 +85,11 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic users --from-be
 {"USERID":71}	{    "registertime": 1491441559667,    "USERID":71,    "regionid": "Region_6",    "gender": "OTHER"}
 ```
 
-A JR connector job for template _store_ will be instantiated and produce 5 new random messages to _store_ topic every 5 seconds, using the Confluent Schema Registry to register the Avro schema.
+### Avro objects
 
-```json
+A JR connector job for template _store_ will be instantiated and produce 5 new random messages to _store_ topic every 5 seconds, using the _Confluent Schema Registry_ to register the _Avro_ schema.
+
+```
 {
     "name" : "jr-avro-quickstart",
     "config": {
@@ -120,6 +125,8 @@ curl -v http://localhost:8081/subjects/store-value/versions/1/schema
 
 {"type":"record","name":"storeRecord","fields":[{"name":"store_id","type":"int"},{"name":"city","type":"string"},{"name":"state","type":"string"}],"connect.name":"storeRecord"}
 ```
+
+### Json schema objects
 
 A JR connector job for template _payment_credit_card_ will be instantiated and produce 5 new random messages to _payment_credit_card_ topic every 5 seconds, using the _Confluent Schema Registry_ to register the _Json_ schema.
 
@@ -157,8 +164,58 @@ curl -v http://localhost:8081/subjects/payment_credit_card-value/versions/1/sche
 < Content-Type: application/vnd.schemaregistry.v1+json
 
 
-{"type":"object","properties":{"cvv":{"type":"string","connect.index":2},"card_number":{"type":"string","connect.index":1},"expiration_date":{"type":"string","connect.index":3},"card_id":{"type":"number","connect.index":0,"connect.type":"float64"}}}%
+{"type":"object","properties":{"cvv":{"type":"string","connect.index":2},"card_number":{"type":"string","connect.index":1},"expiration_date":{"type":"string","connect.index":3},"card_id":{"type":"number","connect.index":0,"connect.type":"float64"}}}
 ```
 
+### Protobuf objects
+
+A JR connector job for template _shopping_rating_ will be instantiated and produce 5 new random messages to _shopping_rating_ topic every 5 seconds, using the _Confluent Schema Registry_ to register the _Protobuf_ schema.
+
+```
+{
+    "name" : "jr-protobuf-quickstart",
+    "config": {
+        "connector.class" : "io.jrnd.kafka.connect.connector.JRSourceConnector",
+        "template" : "shopping_rating",
+        "topic": "shopping_rating",
+        "frequency" : 5000,
+        "objects": 5,
+        "value.converter": "io.confluent.connect.protobuf.ProtobufConverter",
+        "value.converter.schema.registry.url": "http://schema-registry:8081",
+        "tasks.max": 1
+    }
+}
+```
+
+```
+kafka-protobuf-console-consumer --bootstrap-server localhost:9092 --topic shopping_rating --from-beginning --property schema.registry.url=http://localhost:8081
+
+{"ratingId":1,"userId":0,"stars":2,"routeId":2348,"ratingTime":1,"channel":"iOS-test","message":"thank you for the most friendly,helpful experience today at your new lounge"}
+{"ratingId":2,"userId":0,"stars":1,"routeId":6729,"ratingTime":13,"channel":"iOS","message":"why is it so difficult to keep the bathrooms clean ?"}
+{"ratingId":3,"userId":0,"stars":3,"routeId":1137,"ratingTime":25,"channel":"ios","message":"Surprisingly good,maybe you are getting your mojo back at long last!"}
+{"ratingId":4,"userId":0,"stars":2,"routeId":7306,"ratingTime":37,"channel":"android","message":"worst. flight. ever. #neveragain"}
+{"ratingId":5,"userId":0,"stars":3,"routeId":2982,"ratingTime":49,"channel":"android","message":"meh"}
+```
+
+Show the _Protobuf_ schema registered:
+
+```
+curl -v http://localhost:8081/subjects/shopping_rating-value/versions/1/schema
+< HTTP/1.1 200 OK
+< Content-Type: application/vnd.schemaregistry.v1+json
+
+
+syntax = "proto3";
+
+message shopping_rating {
+  int32 rating_id = 1;
+  int32 user_id = 2;
+  int32 stars = 3;
+  int32 route_id = 4;
+  int32 rating_time = 5;
+  string channel = 6;
+  string message = 7;
+}
+```
 
 Additional details are listed in the [official repository](https://github.com/jrnd-io/jr-kafka-connect-source).

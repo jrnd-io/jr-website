@@ -16,6 +16,8 @@ type: book # Do not modify.
 JR provides a Source Connector for Apache Kafka Connect.
 This is useful if you are migrating from [Kafka Connect Datagen](https://github.com/confluentinc/kafka-connect-datagen)
 
+### Configuration 
+
 JR Source Connector can be configured with:
 
  - _**template**_: A valid JR existing template name. For a list of available templates see: https://jrnd.io/docs/#listing-existing-templates

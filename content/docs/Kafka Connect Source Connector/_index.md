@@ -13,8 +13,8 @@ type: book # Do not modify.
 
 ## Kafka Connect Source Connector
 
-JR provides a Source Connector for Apache Kafka Connect.
-This is useful if you are migrating from [Kafka Connect Datagen](https://github.com/confluentinc/kafka-connect-datagen)
+JR provides a Source Connector for Apache Kafka Connect that resides in the same segment of [Kafka Connect Datagen](https://github.com/confluentinc/kafka-connect-datagen)
+for generation of syntetic data.
 
 ### Configuration 
 

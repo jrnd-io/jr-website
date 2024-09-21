@@ -265,4 +265,8 @@ curl -v http://localhost:8081/subjects/customer-value/versions/1/schema
 {"type":"record","name":"recordRecord","fields":[{"name":"customer_id","type":"string"},{"name":"first_name","type":"string"},{"name":"last_name","type":"string"},{"name":"email","type":"string"},{"name":"phone_number","type":"string"},{"name":"street_address","type":"string"},{"name":"state","type":"string"},{"name":"zip_code","type":"string"},{"name":"country","type":"string"},{"name":"country_code","type":"string"}],"connect.name":"recordRecord"}
 ```
 
+## Additional info 
+
 Additional details are listed in the [official repository](https://github.com/jrnd-io/jr-kafka-connect-source).
+
+JR Source Connector is available on Confluent Hub: https://www.confluent.io/hub/jrndio/jr-source-connector

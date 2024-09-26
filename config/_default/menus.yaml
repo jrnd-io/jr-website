@@ -10,3 +10,6 @@ main:
   - name: Blog
     url: blog/
     weight: 20
+  - name: Presentations
+    url: presentations/
+    weight: 30

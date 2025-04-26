@@ -22,7 +22,7 @@ This is needed if you want to serialize with AVRO your own templates, though it'
 
 ## Building JR on Linux/Mac
 
-JR requires Go 1.22
+JR requires Go 1.24
 
 you can use the `make_install.sh` to install JR. This script does everything needed in one simple command.
 
@@ -35,7 +35,7 @@ These are the steps in the `make_install.sh` script if you want to use them sepa
 ```bash
 # generates the code and compile everything
 make all
-# copy the templates and data directory in the .jr in your $HOME folder
+# copy the templates and data directory in your $JR_SYSTEM_DIR, which defaults to $XDG_CONFIGDIR for your OS
 make copy_templates  
 # copy the jr bin in /usr/local/bin
 sudo make install

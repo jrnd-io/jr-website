@@ -147,7 +147,10 @@ schemaRegistryURL=https://blabla.europe-west3.gcp.confluent.cloud
 schemaRegistryUser=blablabla-saslkey
 schemaRegistryPassword=blablabla-saslpwd
 ```
-then use the `--schema` and the `--serializer` flags
+then use the `--schema` and the `--serializer` flags.
+
+If you already have a registered schema and you don't want jr to automatically register a new one, 
+you can disable this behaviour with `--autoRegisterSchemas=false` flag
 
 Example usage:
 ```bash

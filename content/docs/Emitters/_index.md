@@ -36,6 +36,7 @@ jrconfig has a global section and an emitter section
     "mongoConfig": "./mongoDB/config.json",
     "elasticConfig": "./elastic/config.json",
     "s3Config": "./s3/config.json",
+    "gcsConfig": "./gcs/config.json",
     "url": ""
   }
 }
@@ -47,83 +48,72 @@ The `global` section contains basic general configuration for JR, which can be o
 
 What's an emitter? It's basically a preconfigured jr job, and it's really helpful when you have to generate different entities with different generation parameters and relations between them.
 
-You can configure emitters via API or via a json file. Let's see the predefined example:
+You can configure emitters via API or via a json file. Let's see a portion of the predefined jrconfig.json:
 
 ```json
 {
-  "emitters": [
-    {
-      "name": "shoe",
-      "locale": "us",
-      "num": 0,
-      "frequency": "0s",
-      "duration": "0s",
-      "preload": 10,
-      "valueTemplate": "shoe",
-      "output": "stdout",
-      "keyTemplate": "null",
-      "outputTemplate": "{{.V}}\n",
-      "topic": "shoes"
-    },
-    {
-      "name": "shoe_customer",
-      "locale": "us",
-      "num": 1,
-      "frequency": "1s",
-      "duration": "1s",
-      "preload": 5,
-      "valueTemplate": "shoe_customer",
-      "output": "stdout",
-      "keyTemplate": "null",
-      "outputTemplate": "{{.V}}\n",
-      "topic": "shoe_customers"
-    },
-    {
-      "name": "shoe_order",
-      "locale": "us",
-      "num": 1,
-      "frequency": "500ms",
-      "duration": "1s",
-      "preload": 0,
-      "valueTemplate": "shoe_order",
-      "output": "stdout",
-      "keyTemplate": "null",
-      "outputTemplate": "{{.V}}\n",
-      "topic": "shoe_orders"
-    },
-    {
-      "name": "shoe_clickstream",
-      "locale": "us",
-      "num": 1,
-      "frequency": "100ms",
-      "duration": "1s",
-      "preload": 0,
-      "valueTemplate": "shoe_clickstream",
-      "output": "stdout",
-      "keyTemplate": "null",
-      "outputTemplate": "{{.V}}\n",
-      "topic": "shoe_clickstream"
-    }
-  ],
-  "global": {
-    "seed": -1,
-    "templateDir": "$HOME/.jr/templates",
-    "kafkaConfig": "./kafka/config.properties",
-    "schemaRegistry": true,
-    "registryConfig": "./kafka/registry.properties",
-    "serializer": "json-schema",
-    "autoCreate": true,
-    "redisTtl": "1m",
-    "redisConfig": "./redis/config.json",
-    "mongoConfig": "./mongoDB/config.json",
-    "elasticConfig": "./elastic/config.json",
-    "s3Config": "./s3/config.json",
-    "url": ""
+  "emitters": {
+    "shoe": [
+      {
+        "name": "shoe",
+        "locale": "us",
+        "num": 0,
+        "frequency": "0s",
+        "duration": "0s",
+        "preload": 100,
+        "valueTemplate": "shoestore_shoe",
+        "output": "kafka",
+        "keyTemplate": "null",
+        "outputTemplate": "{{.V}}\n",
+        "topic": "shoes"
+      },
+      {
+        "name": "shoe_customer",
+        "locale": "us",
+        "num": 1,
+        "frequency": "0s",
+        "duration": "0s",
+        "preload": 50,
+        "valueTemplate": "shoestore_customer",
+        "output": "kafka",
+        "keyTemplate": "null",
+        "outputTemplate": "{{.V}}\n",
+        "topic": "shoe_customers"
+      },
+      {
+        "name": "shoe_order",
+        "locale": "us",
+        "num": 1,
+        "frequency": "500ms",
+        "duration": "30s",
+        "preload": 0,
+        "valueTemplate": "shoestore_order",
+        "output": "kafka",
+        "keyTemplate": "null",
+        "outputTemplate": "{{.V}}\n",
+        "topic": "shoe_orders"
+      },
+      {
+        "name": "shoe_clickstream",
+        "locale": "us",
+        "num": 1,
+        "frequency": "100ms",
+        "duration": "30s",
+        "preload": 0,
+        "valueTemplate": "shoestore_clickstream",
+        "output": "kafka",
+        "keyTemplate": "null",
+        "outputTemplate": "{{.V}}\n",
+        "topic": "shoe_clickstream"
+      }
+    ]
   }
 }
 ```
 
-The `emitters` section contains an array of emitters.
+The `emitters` section contains a map of arrays of emitters. In the fragment you can see the `shoe` emitter which 
+consists of 4 different entities: `shoe`, `shoe_customer`, `shoe_order` and `shoe_clickstream` respectively
+
 Each emitter has several parameters that can be configured:
 
 - "name":  name of the emitter, will be shown for example with `jr emitter list`

@@ -171,6 +171,8 @@ JR supports end to end (E2E) encryption for Confluent Cloud.
 In order to use the functionality, first follow the official documentation on Confluent Cloud for prerequisites and configuration:
 https://docs.confluent.io/cloud/current/security/encrypt/csfle/overview.html
 
+At the moment support for CSFLE in JR is only provided for AVRO.
+
 After setup accordingly with the documentation, you can then enable CSFLE in JR simply filling those properties in `registry.properties`:
 
 ```properties
@@ -179,7 +181,7 @@ kmsType=valid options are "aws-kms" or "azure-kms" or "gcp-kms"
 kmsKeyID=id of the kek
 ```
 
-In order to use CSFLE, you need an AVRO schema with fields marked as sensitive (PII).
+In order to use CSFLE, you need an AVRO schema with fields marked as sensitive (PII) and you need to use the `--schema` flag to provide it.
 The default schemas in JR are located in `pks/types` folder: at the moment the ones containing PII fields are:
 
 - `payment_credit_card.avsc`, field `card_number`

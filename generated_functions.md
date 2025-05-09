@@ -236,6 +236,24 @@ Total functions: 21
 **Example:** `jr template run --embedded '{{add_v_to_list "ids" "12770"}}{{random_v_from_list "ids"}}'`\
 **Output:** `12770`
 
+### get_first_n_in_list 
+**Category:** context\
+**Description:** returns first n elements of a list from context. The value must be set with 'add_v_to_list', usually in an other template\
+**Parameters:** `name string, number int `\
+**Localizable:** `false`\
+**Return:** `[]string`\
+**Example:** `jr template run --embedded '{{add_v_to_list "ids" "random1"}}{{add_v_to_list "ids" "random2"}}{{add_v_to_list "ids" "random3"}}{{$x := get_first_n_in_list "ids" 2}} {{range $x}}[{{.}}],{{end}}'`\
+**Output:** `[random1],[random2],`
+
+### get_list 
+**Category:** context\
+**Description:** returns a list from context. The value must be set with 'add_v_to_list', usually in an other template\
+**Parameters:** `name string`\
+**Localizable:** `false`\
+**Return:** `[]string`\
+**Example:** `jr template run --embedded '{{add_v_to_list "ids" "random1"}}{{add_v_to_list "ids" "random2"}}{{add_v_to_list "ids" "random3"}}{{$x := get_list "ids"}} {{range $x}}[{{.}}],{{end}}'`\
+**Output:** `[random1],[random2],[random3],`
+
 ### get_v 
 **Category:** context\
 **Description:** returns a context value. The value must be set with 'set_v', usually in an other template\
@@ -281,7 +299,7 @@ Total functions: 21
 **Example:** `jr template run --embedded '{{set_v "id" "12770"}}{{get_v "id"}}'`\
 **Output:** `12770`
 
-Total functions: 6
+Total functions: 8
 
 
 ## Date and Time functions

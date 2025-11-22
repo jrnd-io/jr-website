@@ -11,3 +11,5 @@ Videos and slides of JR demonstrations and presentations from events around the 
 [Unlock the Potential of Your Applications with Synthetic Data Generation Using JR](https://bucharest.bigdataweek.com/session/unlock-the-potential-of-your-applications-with-synthetic-data-generation-using-jr/) - _Big Data Week Bucharest 2024_, Bucharest
 
 [Lesson learned dallo sviluppo di JR, un tool di generazione Sintetica di dati in Go](https://conferences.codemotion.com/milan2024/talks/) - _Codemotion Milan 2024_, Milan
+
+[JR: un tool Linux-like per dati random di qualità](https://www.velletrilug.org/wp-content/uploads/2025/11/JR-_-Quality-Random-Data-from-the-Command-line-1-1.pdf) - _Linux Day 2025_, Velletri (Rome)

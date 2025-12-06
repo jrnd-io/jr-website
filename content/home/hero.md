@@ -21,3 +21,5 @@ Streaming quality Random Data from the Command line
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 Install **jr** using [Homebrew](https://formulae.brew.sh/formula/jr)
+
+Install **jr** using [Snap](https://snapcraft.io/jrnd)
